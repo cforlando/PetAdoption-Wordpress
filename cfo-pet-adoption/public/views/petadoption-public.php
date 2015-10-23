@@ -12,4 +12,12 @@
 
 <div class="petadoption">
   <h1>Pet Adoption</h1>
+  <div id="petsearch-box">
+    <form class="filterpets" action="#">
+      <label for="petsearch">Search through Pets</label>
+      <input type="text" id="petsearch" name="petsearch" />
+    </form>
+  </div>
+  <div id="pets">
+  </div>
 </div>
