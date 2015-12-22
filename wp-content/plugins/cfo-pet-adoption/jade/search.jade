@@ -1,0 +1,35 @@
+include includes/_mixins
+include includes/_functions
+#container-search.container-search
+    .wrap-search-heading
+        h1.search-heading
+    .wrap-search-preview
+        .search-preview
+    .wrap-search-cta
+        h2.search-cta!="<?php _e('Ready to adopt?', 'pet-adoption'); ?> <?php echo get_option('pet_adoption_tel'); ?>"
+    .wrap-search
+
+        form.search(action!="<?php echo '#'; ?>")
+            .wrap-image
+                .image
+            .wrap-instructions
+                h5!="<?php _e('Instructions'); ?>"
+                p.instructions
+                    :php
+                        echo get_option('pet_adoption_search_directions')
+            .wrap-search-fields
+                .search-fields
+                    .wrap-advanced-options
+                        .advanced-options
+                            .wrap-advanced-options-toggle
+                                a.advanced-options-toggle(href!="#")!="<?php _e('Advanced Options', 'pet-adoption'); ?>"
+                            .wrap-advance-options-view
+                                .advanced-options-view
+                                    //+text-field({label:'Keywords:', name:'keywords', placeholder: 'keywords'})
+                    +search-field({label: 'Breed', name: 'breed'})
+                    +search-field({label: 'Size', name: 'size'})
+                    +search-field({label: 'Gender', name: 'sex'})
+            .wrap-search-submit
+                input(type='submit', value='Search')
+    .wrap-search-results
+        .search-results

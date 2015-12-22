@@ -1,0 +1,80 @@
+/*	==================================================
+	Pet View
+	==================================================  */
+$padding-pet-info-px-sans: 12;
+.container-pet{
+  @include inline-block(top);
+  width: em(400);
+  min-width: (100% /3);
+  text-align: center;
+
+  .wrap-pet{
+
+  }
+  .pet{
+
+  }
+  .wrap-pet-name{
+
+
+  }
+  .pet-name{
+
+
+  }
+  .wrap-pet-photo{
+    @include inline-block();
+    max-width: em(200);
+    width: 100%;
+    padding-bottom: 1em;
+  }
+  .pet-photo{
+    @include pet-photo();
+
+  }
+  .wrap-pet-info{
+
+
+  }
+  .pet-info{
+    p {
+      margin: 0 auto;
+    }
+
+  }
+  .wrap-pet-info-size,
+  .wrap-pet-info-sex,
+  .wrap-pet-info-breed{
+    padding-bottom: em($padding-pet-info-px-sans);
+
+
+  }
+  .pet-info-breed{
+
+
+  }
+  .wrap-pet-info-size{
+
+
+  }
+  .pet-info-size{
+
+
+  }
+  .wrap-pet-info-sex{
+
+
+  }
+  .pet-info-sex{
+
+
+  }
+
+  .btn-more-info {
+    background-color: $color-light-grey;
+    border: 0;
+    padding: em(8);
+    text-decoration: none;
+  }
+
+}
