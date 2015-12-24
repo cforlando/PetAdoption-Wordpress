@@ -1,9 +1,5 @@
 #Code for Orlando - Pet Adoption Wordpress Plugin
 
-###Requirements
-* (For development only) [nodejs](https://nodejs.org/en/)
-
-
 ###To Install
 1. In the root of WordPress installation, `git pull https://github.com/khalidhoffman/PetAdoption-Wordpress.git develop`.
 2. Change to URL at [/wp-content/plugins/cfo-pet-adoption/js/modules/models/wordpress.js](wp-content/plugins/cfo-pet-adoption/js/modules/models/wordpress.js) to the correct domain.
@@ -41,7 +37,7 @@ Directory  | Description
 [`/wp-content/plugins/cfo-pet-adoption/public`](wp-content/plugins/cfo-pet-adoption/public) | Contains all compiled CSS, JS, and PHP files for front-end.
 [`/wp-content/plugins/cfo-pet-adoption/sass`](/wp-content/plugins/cfo-pet-adoption/sass) | Sass stylesheets. Can be compiled with `gulp sass`
 
-* You'll need to run `npm install` from the `/wp-content/plugins/cfo-pet-adoption` directory for the `gulp` functions to work.
+* You'll need to run `npm install` (npm is included with [nodejs](https://nodejs.org/en/)) from the `/wp-content/plugins/cfo-pet-adoption` directory for the `gulp` functions to work.
 * All compilation steps can be automated by running `gulp auto`. This will cause gulp to listen for changes and compile appropriately.
 
 ###To Do
