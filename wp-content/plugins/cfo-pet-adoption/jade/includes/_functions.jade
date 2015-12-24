@@ -1,0 +1,8 @@
+- var bgUrl = function(text){ return 'background-image: url(\''+text+'\');'}
+- var bgPHPFunction = function(text){ return 'background-image: url(\'<?php '+text+' ?>\');'}
+- var bgFromFeatureImage = function(size, isIcon, id){ return 'background-image: url(\'<?php echo get_post_featured_img('+((size)?"\""+size+"\"":'null')+', '+(isIcon || 'false')+', '+(id || 'null')+'); ?>\');'}
+- var echoField = function(fieldName){ return '<?php echo get_field(\''+fieldName+'\'); ?>';};
+- var echoSubField = function(fieldName){ return '<?php echo get_sub_field(\''+fieldName+'\'); ?>';};
+- var _e = function(str){ return '<?php _e("'+str+'", "pet-adoption"); ?>'}
+- var echo = function(str){ return '<?php echo '+str+' ?>';}
+- var php = function(str){ return '<?php '+str+' ?>';}
