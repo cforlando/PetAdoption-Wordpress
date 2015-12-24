@@ -5,7 +5,7 @@
 
 
 ###To Install
-1. Clone repo in root of WordPress installation.
+1. In the root of WordPress installation, `git pull https://github.com/khalidhoffman/PetAdoption-Wordpress.git develop`.
 2. Change to URL at [/wp-content/plugins/cfo-pet-adoption/js/modules/models/wordpress.js](wp-content/plugins/cfo-pet-adoption/js/modules/models/wordpress.js) to the correct domain.
 
     ```js
