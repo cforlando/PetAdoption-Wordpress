@@ -19,6 +19,7 @@ register_post_type('pet', array(
 'description' => __('A pet for adoption', 'pet_adoption'),
 'public' => true,
 'publicly_queryable' => true,
+'show_in_rest'       => true,
 'show_ui' => true,
 'hierarchical' => true,
 'supports' => array('title', 'thumbnail', 'editor', 'page-attributes')
