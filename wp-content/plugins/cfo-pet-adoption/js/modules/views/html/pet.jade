@@ -3,7 +3,7 @@ include ../../../../jade/includes/_functions
     .wrap-pet
         .pet
             .wrap-pet-name
-                h2.pet-name!="<%= model.get('title') %>"
+                h2.pet-name!="<%= model.get('title')['rendered'] %>"
             .wrap-pet-photo
                 .pet-photo(style!=bgUrl("<%= model.get('photo') %>"))
             .wrap-pet-info
@@ -15,4 +15,4 @@ include ../../../../jade/includes/_functions
                     .wrap-pet-info-sex
                         p.pet-info-sex!="<%= model.get('acf')['sex'] %>"
             .wrap-btn-more-info
-                a.btn-more-info(href!="#<%= model.get('post_name')") More Info
+                a.btn-more-info(href!="#<%= model.get('post_name')%>") More Info

@@ -1,28 +1,18 @@
 <?php
 
-function pet_adoption_acf_json_save_point( $path ) {
-
-    // return
-    $path = plugin_dir_path( dirname( __FILE__ ) ) . 'includes/acf-json';
-
-    var_dump_log($path, 'path: ');
-    return $path;
-    
-}
-add_filter('acf/settings/save_json', 'pet_adoption_acf_json_save_point');
-
 function get_pet_adoption_fields(){
 
-    //set up an array for all the URLs
+    //set up an array for all the ACF fields
     $fields = array();
 
-    //get all the pages, posts (including CPTs)
+    //get all pets
     $post_query = new WP_Query(array(
         'post_type'         => 'pet',
         'posts_per_page'    => '-1'
     ));
 
-    $count = 1;
+    // TODO need a less assuming method for determining acf fields. Current method requires a pet post to exist
+    $count = 1; // we use the first pet to determine the necessary fields
     while ($post_query->have_posts() && $count--) { $post_query->the_post();
 
             foreach(get_fields(get_the_ID()) as $field_name =>$field_value){
