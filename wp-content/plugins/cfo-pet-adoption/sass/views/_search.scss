@@ -65,6 +65,7 @@ $padding-input-fields-px-sans: 12;
   }
   .search {
     @include inline-block();
+    width: 100%;
   }
   .wrap-search-fields {
 
