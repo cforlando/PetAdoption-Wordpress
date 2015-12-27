@@ -38,6 +38,7 @@ Directory  | Description
 [`/wp-content/plugins/cfo-pet-adoption/sass`](/wp-content/plugins/cfo-pet-adoption/sass) | Sass stylesheets. Can be compiled with `gulp sass`
 
 * You'll need to run `npm install` (npm is included with [nodejs](https://nodejs.org/en/)) from the `/wp-content/plugins/cfo-pet-adoption` directory for the `gulp` functions to work.
+    * You'll probably want to install gulp globally as well. `npm install -g gulp` will do that, or you can use gulp locally like so: `./node_modules/.bin/gulp [GULP TASK NAME]`
 * All compilation steps can be automated by running `gulp auto`. This will cause gulp to listen for changes and compile appropriately.
 
 ###To Do
