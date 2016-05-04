@@ -9,7 +9,6 @@
  *
  */
 ?>
-
 <div class="petadoption">
   <h1>Pets available for adoption</h1>
   <div id="petsearch-box">
