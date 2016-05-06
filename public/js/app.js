@@ -24,14 +24,14 @@ var $ = jQuery;
       $('.petsSearch').keyup(function () {
         $('.pet-name').each(function() {
           if (this.innerHTML.toUpperCase().indexOf($('.petsSearch').val().toUpperCase()) == 0) {
-            this.addClass("shown-pets");
+            $(this).addClass("shown-pets").removeClass("hidden-pets");
           }
           else {
-            this.addClass("hidden-pets").removeClass("shown-pets");
+            $(this).addClass("hidden-pets").removeClass("shown-pets");
           }
         });
 
-        $('.petsNumber').text(petNames.length);
+        $('.petsNumber').text($(".shown-pets").length);
       });
 
     });

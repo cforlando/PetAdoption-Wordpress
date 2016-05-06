@@ -71,14 +71,13 @@ function petadoption_plugin_settings_page() {
         plugins_url( '/public/js/app.js' , __FILE__ ),
         array( 'jquery' )
       );
-      wp_localize_script('app', 'parse', $params);
     }
     add_action( 'wp_enqueue_scripts', 'petadoption_scripts' );
   }
 
   function petadoption_styles() {
-    wp_enqueue_style( 'pet-adoption', plugins_url( '/css/pet-adoption.css', __FILE__ ) );
+    wp_enqueue_style( 'pet-adoption', plugins_url( '/public/css/pet-adoption.css', __FILE__ ) );
   }
 
-  add_action('admin_print_styles', 'petadoption_styles');
+  add_action('wp_enqueue_scripts', 'petadoption_styles');
 ?>
