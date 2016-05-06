@@ -75,4 +75,10 @@ function petadoption_plugin_settings_page() {
     }
     add_action( 'wp_enqueue_scripts', 'petadoption_scripts' );
   }
+
+  function petadoption_styles() {
+    wp_enqueue_style( 'pet-adoption', plugins_url( '/css/pet-adoption.css', __FILE__ ) );
+  }
+
+  add_action('admin_print_styles', 'petadoption_styles');
 ?>

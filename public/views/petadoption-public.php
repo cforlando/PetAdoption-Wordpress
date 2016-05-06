@@ -10,10 +10,10 @@
  */
 ?>
 <div class="petadoption">
-  <h1>Pets available for adoption</h1>
-  <div id="petsearch-box">
-    <input type="text" id="petsearch" name="petsearch" placeholder="Search" />
-  </div>
+  <h1><span class="petsNumber"></span> pets match your criteria</h1>
+  <input type="text" class="petsSearch" name="petsSearch" placeholder="Search for Pets" />
+
   <div id="pets">
+
   </div>
 </div>
