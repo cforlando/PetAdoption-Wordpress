@@ -1,0 +1,46 @@
+
+$breakpoint-mobile-px-sans: 768;
+$breakpoint-mobile: $breakpoint-mobile-px-sans * 1px;
+$breakpoint-tablet-px-sans: 1024;
+$breakpoint-tablet: $breakpoint-tablet-px-sans * 1px;
+$breakpoint-font-reduction-px-sans: 1080;
+$breakpoint-font-reduction: $breakpoint-font-reduction-px-sans * 1px;
+
+$color-white: #fff;
+$color-black: #000;
+$color-grey: #828282;
+$color-dark-grey: #323232;
+$color-light-grey: #d8d8d8;
+$color-powered-hover:#bc6c50;
+
+$font-size-body-default-px-sans: 16;
+$font-size-body-default-px: $font-size-body-default-px-sans +px;
+
+
+$duration-transition-default-ms: 400ms;
+$duration-transition-default: $duration-transition-default-ms;
+$duration-transition-dp-ms: 250ms;
+$duration-transition-long-ms: 1000ms;
+$duration-transition-short-ms: 250ms;
+
+$height-header-menu-px-sans: 150;
+
+$max-width-page-content-px-sans: 1024;
+
+$media-mobile: '(max-width:'+$breakpoint-mobile+")";
+$media-larger-than-mobile: '(min-width:'+$breakpoint-mobile+')';
+$media-tablet: '(min-width:'+$breakpoint-mobile+') + (max-width:'+$breakpoint-tablet+")";
+$media-larger-than-tablet: '(min-width:'+$breakpoint-tablet+')';
+$media-font-reduction: '(max-width:'+$breakpoint-font-reduction+')';
+
+$ratio-font-reduction: .7;
+
+$timing-transition-dp: cubic-bezier(0.52, -0.03, 0.51, 1.415);
+$timing-transition-default: ease;
+
+$url-500: url('http://placehold.it/500x500');
+$url-1920: url('http://placehold.it/1920x1080');
+$url-960: url('http://placehold.it/960x960');
+
+$char-icon-email: '\e800';
+$char-icon-default: $char-icon-email;
