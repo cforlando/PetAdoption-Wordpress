@@ -1,0 +1,41 @@
+include includes/_mixins
+include includes/_functions
+#search.search
+    script.
+        window.PetAdoption = {
+            domain : "#[!=echo("get_option('pet_adoption_domain')")]"
+        };
+    .search-heading
+        h1.search-heading__text
+    .search-preview
+        .search-preview__wrap
+    .search-cta
+        h2.search-cta__text #[span()!=_e('Ready to adopt?')] #[a(href!='tel:'+echo("get_option('pet_adoption_tel')"))!=echo("get_option('pet_adoption_tel')")]
+    .search__wrap
+        form.search__form(action!='#!')
+            .image
+                .image__placeholder
+            .instructions
+                h5.instructions__heading!=_e('Instructions')
+                p.instructions__content!=echo("get_option('pet_adoption_instructions')")
+            .search-fields
+                .search-fields__wrap
+                    .advanced-options
+                        .advanced-options__wrap
+                            .toggle.toggle--advanced-options
+                                a.toggle__link(href!="#")!=_e('Advanced Options')
+                            .advanced-options-view
+                                button(data-remodal-action="close", class="remodal-close")
+                                .advanced-options-view__wrap
+                                    //+text-field({label:'Keywords:', name:'keywords', placeholder: 'keywords'})
+                                button(data-remodal-action="cancel", class="remodal-cancel")!=_e("Cancel")
+                                button(data-remodal-action="confirm", class="remodal-confirm")!=_e('OK')
+                    +type-field()
+                    //+search-field({label: 'Breed', name: 'primaryBreed'})
+                    //+search-field({label: 'Size', name: 'size'})
+                    //+search-field({label: 'Gender', name: 'sex'})
+            .button.button--submit
+                input.button__input(type='submit', value='Search')
+    .search-chips
+    .search-results
+        .search-results__wrap

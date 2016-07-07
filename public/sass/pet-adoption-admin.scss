@@ -1,0 +1,15 @@
+@import "helpers/-all";
+@import "admin/-all";
+
+#pet-adoption-settings {
+
+  label {
+    display: block;
+  }
+  
+  input[type='tel'],
+  input[type='text'],
+  textarea {
+    width: 100%;
+  }
+}

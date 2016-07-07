@@ -1,0 +1,33 @@
+.advanced-options-view {
+  font-family: sans-serif;
+  display: none;
+
+  &.remodal {
+    display: inline-block;
+  }
+
+  &__wrap {
+
+    .property {
+      text-align: left;
+
+      &__wrap {
+
+      }
+    }
+  }
+
+
+  .remodal-close{
+
+    &:hover {
+      background: none;
+    }
+  }
+
+  .remodal-cancel,
+  .remodal-confirm {
+    border-radius: 0;
+    margin: 0 6px;
+  }
+}

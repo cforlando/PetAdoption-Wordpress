@@ -1,0 +1,17 @@
+include ../../../../jade/includes/_functions
+.pet__container
+    .pet__wrap
+        .pet-name
+            h2.pet-name__text!="<%= model.get('petName') %>"
+        .pet-photo
+            .pet-photo__placeholder(style!=bgUrl("<%= (model.get('images').length > 0) ? 'http://cfo-pet-adoption-server.eastus.cloudapp.azure.com'+model.get('images')[0] : 'http://placehold.it/480x480' %>"))
+        .pet-info
+            .pet-info__wrap
+                .pet-info-breed
+                    p.pet-info-breed__text!="<%= model.get('breed') %>"
+                .pet-info-size
+                    p.pet-info-size__text!="<%= model.get('size') %>"
+                .pet-info-sex
+                    p.pet-info-sex__text!="<%= model.get('sex') %>"
+        .btn--more-info
+            a.btn__link(href!="#<%= model.get('petId') %>") More Info

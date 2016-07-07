@@ -1,0 +1,181 @@
+/*	==================================================
+	Search
+	==================================================  */
+$padding-input-fields-px-sans: 12;
+.search {
+  font-family: sans-serif;
+  @include inline-block();
+  width: 100%;
+  background-color: $color-dark-grey;
+  color: $color-white;
+
+  &,
+  * {
+    @include box-sizing(border-box);
+  }
+
+  .search-heading {
+
+    &__text {
+
+    }
+  }
+
+  .search-preview {
+
+    &__wrap {
+
+    }
+  }
+  .search-cta {
+    background-color: $color-grey;
+    padding: em($padding-input-fields-px-sans) (100% * 24/1280);
+
+    a,
+    &__text {
+      color: $color-white;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    a {
+      text-decoration: none;
+      color: $color-white;
+      box-shadow: none;
+    }
+  }
+
+  .image,
+  .instructions,
+  .search-fields {
+    @include inline-block();
+    //padding: 1.5em (100% * 24/1280);
+    padding: 1.5em (100% * 24/1280);
+    width: (100% / 3);
+  }
+
+  .image {
+    text-align: center;
+
+    &__placeholder {
+      @include pet-photo();
+    }
+  }
+
+  .instructions {
+    padding-left: 0;
+    padding-right: 0;
+
+    &__heading {
+      margin: 0 auto .5em;
+      text-align: center;
+    }
+  }
+
+  .search-fields {
+    $selector-block: &;
+
+    #{$selector-block}__wrap {
+
+    }
+
+  }
+
+  .advanced-options {
+    $selector-block: &;
+
+    #{$selector-block}__wrap {
+
+    }
+  }
+  .toggle {
+    $selector-block: &;
+
+    &--advanced-options {
+      padding-bottom: em($padding-input-fields-px-sans);
+      text-decoration: none;
+
+      .toggle__link {
+        box-shadow: none;
+        background-color: $color-grey;
+        color: $color-white;
+        display: block;
+        padding: em(12);
+        text-decoration: none;
+        text-align: center;
+      }
+    }
+  }
+
+  .input {
+    padding-bottom: em($padding-input-fields-px-sans);
+    @include cut-outer-padding();
+  }
+
+  select {
+    background-color: $color-white;
+    border: 0;
+    display: block;
+    padding: em($padding-input-fields-px-sans);
+    text-align: center;
+    width: 100%;
+  }
+
+  option {
+    text-align: center;
+  }
+
+  input[type='submit'] {
+    display: block;
+    background-color: $color-grey;
+    padding: em($padding-input-fields-px-sans);
+    text-align: center;
+    width: 100%;
+  }
+
+  .search-results {
+
+    &__wrap {
+      text-align: center;
+    }
+  }
+ 
+  .search-chips {
+    padding: 12px;
+  }
+
+  .prop-chip {
+    display: inline-block;
+    background-color: $color-grey;
+    border-radius: 16px;
+    margin: .25em 1em;
+    padding: .15em .75em;
+    &:after{
+        content: 'x';
+        margin-left: .5em;
+        color: darken($color-grey, 25%);
+    }
+  }
+
+  @media #{$media-mobile} {
+
+    .image,
+    .instructions,
+    .search-fields {
+      display: block;
+      padding: .75em 1.5em;
+      width: 100%;
+    }
+
+    .image {
+      padding-top: 1.5em;
+    }
+
+    .search-fields {
+
+      &__wrap {
+        padding: 0;
+      }
+    }
+  }
+}
