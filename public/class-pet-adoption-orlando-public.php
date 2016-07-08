@@ -100,12 +100,10 @@ class Pet_Adoption_Orlando_Public {
          * class.
          */
 
-//        wp_enqueue_script($this->plugin_name, plugin_dir_url(__FILE__) . 'js/pet-adoption.js', array('jquery'), $this->version, false);
-//        wp_enqueue_script($this->plugin_name, plugin_dir_url(__FILE__) . 'js/pet-adoption.js', array('require'), $this->version, false);
-        wp_enqueue_script('require', plugin_dir_url(__FILE__) . 'js/vendors/requirejs/require.js', array(), $this->version, false);
-        wp_enqueue_script('require-config', plugin_dir_url(__FILE__) . 'js/rjs-config.js', array('require'), $this->version, false);
-        wp_enqueue_script('app', plugin_dir_url(__FILE__) . 'js/app-dev.js', array('require-config'), $this->version, false);
-
+        //wp_enqueue_script('require', plugin_dir_url(__FILE__) . 'js/vendors/requirejs/require.js', array(), $this->version, false);
+        //wp_enqueue_script('require-config', plugin_dir_url(__FILE__) . 'js/rjs-config.js', array('require'), $this->version, false);
+        //wp_enqueue_script('app', plugin_dir_url(__FILE__) . 'js/app-dev.js', array('require-config'), $this->version, false);
+        wp_enqueue_script('cfo-pet-adoption', plugin_dir_url(__FILE__) . 'js/pet-adoption.js', array(), $this->version, false);
     }
 
     function petadoption_view() {
