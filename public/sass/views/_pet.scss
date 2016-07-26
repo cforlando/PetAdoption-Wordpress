@@ -5,6 +5,7 @@ $padding-pet-info-px-sans: 12;
 .pet {
   @include inline-block(top);
   width: em(400);
+  max-width: 100%;
   margin: 0 auto;
   min-width: (100% /3);
   padding: 2em 0 1em;

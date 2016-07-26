@@ -1,0 +1,34 @@
+include helpers/_-all
+.pet__container
+    .pet__wrap
+        .pet-name
+            h2.pet-name__text!="<%= model.get('petName') %>"
+        .pet-photo
+            .pet-photo__placeholder(style!=bg("<%= (model.get('images').length > 0) ? model.get('images')[0] : 'http://placehold.it/480x480' %>"))
+        .pet-info
+            .pet-info__wrap
+                .pet-info-breed
+                    p.pet-info-breed__text!="<%= model.get('breed') %>"
+                .pet-info-size
+                    p.pet-info-size__text!="<%= model.get('size') %>"
+                .pet-info-sex
+                    p.pet-info-sex__text!="<%= model.get('sex') %>"
+        .pet-details(data-details-id!="<%= model.get('petId') %>")
+            .pet-details__wrap
+                button(data-remodal-action="close", class="remodal-close")
+                table.petProp
+                    thead
+                        td Name
+                        td Details
+                    :ejs
+                        for(var propName in model.attributes) {
+                            if(model.attributes.hasOwnProperty(propName)){
+                    tr
+                        td!="<%= propName %>"
+                        td!="<%= model.get(propName) %>"
+                    :ejs
+                            };
+                        };
+                button(data-remodal-action="confirm", class="remodal-confirm") OK
+        .btn--more-info
+            a.btn__link(href!="#<%= model.get('petId') %>") More Info

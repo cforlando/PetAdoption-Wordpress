@@ -1,0 +1,29 @@
+include _functions
+
+mixin type-field(options)
+    - options = options || {};
+    - var _options = {label: options.label||'Pet Type', name: options.name || 'species', types: options.types || ['cat', 'dog']}
+    .field.field--species(class!=_options.name)
+        select.field__select(class!='input-'+_options.name, name!=_options.name)
+            each petType in _options.types
+                option(value!=petType)!=petType
+
+mixin search-field(options)
+    - options = options || {};
+    - var _options = {label: options.label||'n/a', name: options.name || 'invalid'}
+    .field.field--search(class!=options.name)
+        select.field__select(class!='input-'+options.name, name!=_options.name)
+            option(value!=options.name)!=options.name
+            :php
+                $fields = get_pet_adoption_fields();
+                foreach($fields['#{_options.name}']['options'] as $choice):
+            option(value!=echo("$choice"))!=echo("$choice")
+            :php
+                endforeach;
+
+mixin text-field(options)
+    - options = options || {};
+    - var _options = {label: options.label||'n/a', name: options.name || 'invalid', placeholder: options.placeholder || 'n/a'}
+    .field.field--text(class!=options.name)
+        label(for!=_options.name)!=_options.label
+        input.field__input(type='text', name!=_options.name, placeholder!=_options.placeholder)

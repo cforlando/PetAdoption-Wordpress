@@ -1,4 +1,4 @@
 define([],function(){
-    window.NameSpace = window.NameSpace || {};
-    return window.NameSpace;
+    window.CFOPetAdoption = window.CFOPetAdoption || {};
+    return window.CFOPetAdoption;
 });

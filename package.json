@@ -1,0 +1,25 @@
+{
+  "name": "petadoption-wordpress",
+  "version": "1.0.0",
+  "description": "Pet Adoption Plugin for WordPress",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "gulp": "^3.9.1"
+  },
+  "devDependencies": {
+    "gulp-utils": "git+https://github.com/khalidhoffman/gulp-utils.git"
+  },
+  "scripts": {
+    "setup:dev": "dp-setup"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/khalidhoffman/PetAdoption-Wordpress.git"
+  },
+  "author": "Khalid Hoffman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/khalidhoffman/PetAdoption-Wordpress/issues"
+  },
+  "homepage": "https://github.com/khalidhoffman/PetAdoption-Wordpress#readme"
+}

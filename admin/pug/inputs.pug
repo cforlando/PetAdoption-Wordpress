@@ -1,0 +1,18 @@
+include helpers/_-all
+include includes/_mixins
+include includes/_functions
+:php
+    $apikey = get_option($this->option_namespace . '_api_key');
+    $domain = get_option($this->option_namespace . '_domain');
+    $tel = get_option($this->option_namespace . '_tel');
+    $directions = get_option($this->option_namespace . '_instructions');
+fieldset
+    .input-field
+        label !{_e("Domain")}:
+        input(type='text' name!=echo("$this->option_namespace . '_domain'"), id!=echo("$this->option_namespace . '_domain'"), value!=echo("$domain"))
+    .input-field
+        label !{_e("Telephone Number")}:
+        input(type='tel', name!=echo("$this->option_namespace . '_tel'"), id!=echo("$this->option_namespace . '_tel'"), value!=echo("$tel"))
+    .input-field
+        label !{_e("Instructions")}:
+        textarea(name!=echo("$this->option_namespace . '_instructions'"), id!=echo("$this->option_namespace . '_instructions'"))!=echo("$directions")

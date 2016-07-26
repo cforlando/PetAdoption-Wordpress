@@ -2,6 +2,7 @@ define([
     'require',
     'text!./html/pet.ejs',
     'namespace',
+    'remodal',
     'backbone'
 ], function(require){
     var Backbone = require('backbone'),
@@ -10,6 +11,13 @@ define([
             initialize : function(){
 
                 return this;
+            },
+            events : {
+                'click .btn--more-info .btn__link' : 'onClickMoreInfo'
+            },
+            onClickMoreInfo : function(evt){
+                if(evt && evt.preventDefault) evt.preventDefault();
+                this.detailsView.open();
             },
             className : 'pet',
             render : function(){
@@ -20,6 +28,7 @@ define([
                         }
                     });
                 this.$el.html(compile());
+                this.detailsView = this.$(".pet-details__wrap").remodal();
                 return this;
             }
         });

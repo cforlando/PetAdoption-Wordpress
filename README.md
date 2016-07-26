@@ -8,6 +8,13 @@
 
 ###Development
 * Do take notice of the `.gitmodules`. There are numerous git submodules being used for the front-end development.
+- `gulp-utils` provides easy compilation of javascript, stylus, and pug/jade files.
+    + you can can read more about how it works on its [github repo](https://github.com/khalidhoffman/gulp-utils.git)
+    + `gulp --tasks` shows a list of all possible tasks, but you'll probably only want to use:
+       + `gulp build-js` - bundles and minifies javascript
+       + `gulp pug-php` - compiles `admin/pug/*.pug` and `public/pug/*.pug` files
+       + `gulp pug-js` - compiles `public/javascript/modules/views/html/*.pug` files
+
 
 ###To Do
 - [ ] Code out the Front End for the plugin.

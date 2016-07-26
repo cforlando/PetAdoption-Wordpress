@@ -82,7 +82,7 @@ class Pet_Adoption_Orlando_Admin {
          * class.
          */
 
-        wp_enqueue_style($this->plugin_name, plugin_dir_url(__FILE__) . 'css/pet-adoption-admin.css', array(), $this->version, 'all');
+        wp_enqueue_style($this->plugin_name, plugin_dir_url(__FILE__) . 'stylesheets/pet-adoption-admin.css', array(), $this->version, 'all');
 
     }
 
@@ -145,36 +145,7 @@ class Pet_Adoption_Orlando_Admin {
      * @since  1.0.0
      */
     public function pet_adoption_general() {
-        $domain = get_option($this->option_namespace . '_domain');
-        $apikey = get_option($this->option_namespace . '_api_key');
-        ?>
-        <fieldset>
-            <div class="input-field">
-                <label>
-                    <?php _e("Domain: ") ?>
-                </label>
-                <input type="tel" name="<?php echo $this->option_namespace . '_domain' ?>"
-                       id="<?php echo $this->option_namespace . '_domain' ?>"
-                       value="<?php echo $domain; ?>"
-            </div>
-            <div class="input-field">
-                <label>
-                    <?php _e("Telephone Number: ") ?>
-                </label>
-                <input type="tel" name="<?php echo $this->option_namespace . '_tel' ?>"
-                       id="<?php echo $this->option_namespace . '_tel' ?>"
-                       value="<?php echo get_option($this->option_namespace . '_tel'); ?>"
-            </div>
-            <div class="input-field">
-                <label>
-                    <?php _e("Instructions: ") ?>
-                </label>
-                <?php $directions = get_option($this->option_namespace . '_instructions'); ?>
-                <textarea name="<?php echo $this->option_namespace . '_instructions' ?>"
-                          id="<?php echo $this->option_namespace . '_instructions' ?>"><?php echo $directions; ?></textarea>
-            </div>
-        </fieldset>
-        <?php
+        include_once 'partials/inputs.php';
     }
 
     public function pet_adoption_sanitize_domain($value){

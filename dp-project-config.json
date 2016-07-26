@@ -1,0 +1,47 @@
+{
+  "name": "boilerplate",
+  "dbTablePrefix": "boilerplate",
+  "dbNamePrefix" : "hugoazz_",
+  "avocodeSelector" : "boilerplate",
+  "basePath" : "default",
+  "tasks" : [
+    {
+      "name" : "pugjs",
+      "input": "public/js/modules/views/html/",
+      "output": "js/modules/views/"
+    },
+    {
+      "name" : "pug",
+      "input": "public/pug/",
+      "output": "public/"
+    },
+    {
+      "name" : "pug",
+      "input": "admin/pug/",
+      "output": "admin/partials/"
+    },
+    {
+      "name" : "js-beautify",
+      "input": "public/js/modules/"
+    },
+    {
+      "name" : "js-bundle",
+      "input": "public/js/build.js",
+      "output": "public/js/"
+    },
+    {
+      "name" : "jsx",
+      "input": "public/js/src/"
+    },
+    {
+      "name" : "stylus",
+      "input": "public/stylus/",
+      "output": "public/stylesheets/"
+    },
+    {
+      "name": "sass",
+      "input": "admin/sass/",
+      "output": "admin/stylesheets/"
+    }
+  ]
+}

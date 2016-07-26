@@ -1,0 +1,12 @@
+include helpers/_-all
+.property
+    //h3.property__label!="<%= data.label %>"
+    select.property__input(class!="<%= data.className %>")
+        option(value!="")!="<%= data.label %>"
+        :ejs
+            for (var propName in data.options) {
+            if (data.options.hasOwnProperty(propName)) {
+        option(value!="<%= data.options[propName].value %>")!="<%= data.options[propName].label %> "
+        :ejs
+            }
+            }
