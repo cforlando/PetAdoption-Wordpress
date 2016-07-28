@@ -13,13 +13,14 @@ var path = require('path'),
 // dev task that watches and executes appropriate tasks as necessary
 gulp.task('auto', function(){
     gulp.watch(projectUtils.buildGlobArray(project.tasks['pug'], '/**/*.pug'), ['pug-php']);
-    gulp.watch(projectUtils.buildGlobArray(project.tasks['stylus'], '/**/*.styl'), ['stylus']);
-    // gulp.watch(projectUtils.buildGlobArray(project.tasks['pugjs'], '/**/*.pug'), ['pug-js']);
+    // gulp.watch(projectUtils.buildGlobArray(project.tasks['stylus'], '/**/*.styl'), ['stylus']);
+    gulp.watch(projectUtils.buildGlobArray(project.tasks['pugjs'], '/**/*.pug'), ['pug-js']);
     // gulp.watch(projectUtils.buildGlobArray(project.tasks['jsx'], '!(node_modules|vendors)/**/*.jsx'), ['babel']);
-    // gulp.watch(projectUtils.buildGlobArray(project.tasks['sass'], '/**/*.scss'), ['sass']);
+    gulp.watch(projectUtils.buildGlobArray(project.tasks['sass'], '/**/*.scss'), ['sass']);
     // gulp.watch(projectUtils.buildGlobArray(project.tasks['js'],'!(node_modules|vendors)/**/*.js'), ['beautify-js']);
     gulpModule('project/chrome-sync').start();
 });
+// CSS tasks
 
 gulp.task('stylus', gulpModule('stylus').compile);
 
@@ -27,7 +28,6 @@ gulp.task('stylus-auto', function(){
     gulp.watch(projectUtils.buildGlobArray(project.tasks['stylus'], '**/!(_)*.styl'), ['stylus']);
 });
 
-// CSS tasks
 gulp.task('less', gulpModule('less').compile);
 
 gulp.task('sass', gulpModule('sass').compile);
@@ -36,8 +36,8 @@ gulp.task('sass-debug', gulpModule('sass').debug);
 
 gulp.task('compass', gulpModule('sass').compass);
 
-// Jade tasks
 
+// Jade tasks
 gulp.task('pug-2-stylus', gulpModule('stylus').pug2Stylus);
 
 gulp.task('pug-php', gulpModule('pug').php);
@@ -80,7 +80,14 @@ gulp.task('init-avocode', gulpModule('avocode').init);
 // Babel tasks
 gulp.task('babel', gulpModule('babel').compile);
 
-
 gulp.task('babel-auto', function(){
     gulp.watch(projectUtils.buildGlobArray(project.tasks['jsx'], '!(node_modules|vendors)/**/*.jsx'), ['babel']);
+});
+
+
+// Project tasks
+gulp.task('ftp', gulpModule('ftp').sync);
+
+gulp.task('ftp-auto', function(){
+    gulp.watch(projectUtils.buildGlobArray(project.tasks['ftp'], ''), ['ftp']);
 });

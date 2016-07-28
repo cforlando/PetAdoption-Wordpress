@@ -8,12 +8,12 @@
     {
       "name" : "pugjs",
       "input": "public/js/modules/views/html/",
-      "output": "js/modules/views/"
+      "output": "public/js/modules/views/html/"
     },
     {
       "name" : "pug",
       "input": "public/pug/",
-      "output": "public/"
+      "output": "public/partials/"
     },
     {
       "name" : "pug",
@@ -25,23 +25,18 @@
       "input": "public/js/modules/"
     },
     {
-      "name" : "js-bundle",
-      "input": "public/js/build.js",
-      "output": "public/js/"
-    },
-    {
       "name" : "jsx",
       "input": "public/js/src/"
-    },
-    {
-      "name" : "stylus",
-      "input": "public/stylus/",
-      "output": "public/stylesheets/"
     },
     {
       "name": "sass",
       "input": "admin/sass/",
       "output": "admin/stylesheets/"
+    },
+    {
+      "name": "sass",
+      "input": "public/sass/",
+      "output": "public/stylesheets/"
     }
   ]
 }

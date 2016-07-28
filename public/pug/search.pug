@@ -1,10 +1,9 @@
 include helpers/_-all
 include includes/_mixins
-include includes/_functions
 #search.search
     script.
         window.PetAdoption = {
-            domain : "#[!=echo("get_option('pet_adoption_domain')")]"
+            domain : "!{echo("get_option('pet_adoption_domain')")}"
         };
     .search-heading
         h1.search-heading__text

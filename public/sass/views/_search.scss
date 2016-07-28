@@ -145,6 +145,7 @@ $padding-input-fields-px-sans: 12;
   }
 
   .prop-chip {
+    cursor: pointer;
     display: inline-block;
     background-color: $color-grey;
     border-radius: 16px;
