@@ -1,11 +1,10 @@
 {
   "name": "petadoption-wordpress",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Pet Adoption Plugin for WordPress",
   "main": "gulpfile.js",
   "dependencies": {},
   "devDependencies": {
-    "gulp": "^3.9.1",
     "gulp-utils": "git+https://github.com/khalidhoffman/gulp-utils.git"
   },
   "scripts": {
