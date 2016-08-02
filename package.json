@@ -1,6 +1,6 @@
 {
   "name": "petadoption-wordpress",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Pet Adoption Plugin for WordPress",
   "main": "gulpfile.js",
   "dependencies": {},
@@ -10,7 +10,7 @@
   "scripts": {
     "setup:dev": "dp-setup",
     "submodules:init": "git submodule init && git submodule update",
-    "submodules:update": "git submodule foreach git-pull"
+    "submodules:update": "git submodule foreach git-reset --hard origin/master && git submodule foreach git-pull"
   },
   "repository": {
     "type": "git",
