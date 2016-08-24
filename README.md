@@ -18,6 +18,4 @@
 
 
 ###To Do
-- [ ] Improve design of pet details view
 - [ ] Improve design of advanced search view
-
