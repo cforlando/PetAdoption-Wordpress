@@ -136,6 +136,8 @@ class Pet_Adoption_Orlando_Admin {
         register_setting($this->plugin_name, $this->option_namespace . '_api_key');
         register_setting($this->plugin_name, $this->option_namespace . '_instructions');
         register_setting($this->plugin_name, $this->option_namespace . '_tel');
+        register_setting($this->plugin_name, $this->option_namespace . '_email');
+        register_setting($this->plugin_name, $this->option_namespace . '_web');
 
     }
 

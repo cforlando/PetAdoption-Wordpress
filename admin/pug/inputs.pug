@@ -1,9 +1,11 @@
-include helpers/_-all
+include _auto-generated/_-all
 include includes/_mixins
 :php
     $apikey = get_option($this->option_namespace . '_api_key');
     $domain = get_option($this->option_namespace . '_domain');
     $tel = get_option($this->option_namespace . '_tel');
+    $email = get_option($this->option_namespace . '_email');
+    $web = get_option($this->option_namespace . '_web');
     $directions = get_option($this->option_namespace . '_instructions');
 fieldset
     .input-field
@@ -12,6 +14,12 @@ fieldset
     .input-field
         label !{_e("Telephone Number")}:
         input(type='tel', name!=echo("$this->option_namespace . '_tel'"), id!=echo("$this->option_namespace . '_tel'"), value!=echo("$tel"))
+    .input-field
+        label !{_e("Email")}:
+        input(type='email', name!=echo("$this->option_namespace . '_email'"), id!=echo("$this->option_namespace . '_email'"), value!=echo("$email"))
+    .input-field
+        label !{_e("Website URL")}:
+        input(type='url', name!=echo("$this->option_namespace . '_web'"), id!=echo("$this->option_namespace . '_web'"), value!=echo("$web"))
     .input-field
         label !{_e("Instructions")}:
         textarea(name!=echo("$this->option_namespace . '_instructions'"), id!=echo("$this->option_namespace . '_instructions'"))!=echo("$directions")

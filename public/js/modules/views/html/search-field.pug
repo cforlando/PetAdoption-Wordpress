@@ -1,12 +1,12 @@
-include helpers/_-all
-.property
-    //h3.property__label!="<%= data.label %>"
-    select.property__input(class!="<%= data.className %>")
-        option(value!="")!="<%= data.label %>"
+include _auto-generated/_-all
+.property(class!="<%= data.className %>", data-prop-name!="<%= data.className %>")
+    a.dropdown-button.grey.btn.property__label(href='#', data-prop-label!="<%= data.label %>", data-activates!="dropdown-<%= data.className %>")!="<%= data.value || data.label %>"
+    ul.dropdown-content.property__input(id!="dropdown-<%= data.className %>", class!="<%= data.className %>")
         :ejs
             for (var propName in data.options) {
-            if (data.options.hasOwnProperty(propName)) {
-        option(value!="<%= data.options[propName].value %>")!="<%= data.options[propName].label %> "
+                if (data.options.hasOwnProperty(propName)) {
+        li.property-option()
+            a.property-option__value(href!='#!', data-value!="<%= data.options[propName].value %>")!="<%= data.options[propName].label %>"
         :ejs
-            }
+                }
             }

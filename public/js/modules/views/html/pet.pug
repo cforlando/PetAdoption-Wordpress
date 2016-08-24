@@ -1,4 +1,4 @@
-include helpers/_-all
+include _auto-generated/_-all
 .pet__container
     .pet__wrap
         .pet-name
@@ -13,22 +13,7 @@ include helpers/_-all
                     p.pet-info-size__text!="<%= model.get('size') %>"
                 .pet-info-sex
                     p.pet-info-sex__text!="<%= model.get('sex') %>"
-        .pet-details(data-details-id!="<%= model.get('petId') %>")
+        .pet-details
             .pet-details__wrap
-                button(data-remodal-action="close", class="remodal-close")
-                table.petProp
-                    thead
-                        td Name
-                        td Details
-                    :ejs
-                        for(var propName in model.attributes) {
-                            if(model.attributes.hasOwnProperty(propName)){
-                    tr
-                        td!="<%= propName %>"
-                        td!="<%= model.get(propName) %>"
-                    :ejs
-                            };
-                        };
-                button(data-remodal-action="confirm", class="remodal-confirm") OK
         .btn--more-info
             a.btn__link(href!="#<%= model.get('petId') %>") More Info

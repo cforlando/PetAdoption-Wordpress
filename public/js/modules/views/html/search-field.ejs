@@ -1,3 +1,3 @@
-<div class="property"><!--h3.property__label!="<%= data.label %>"--><select class="property__input <%= data.className %>"><option value=""><%= data.label %></option><% for (var propName in data.options) {
-if (data.options.hasOwnProperty(propName)) { %><option value="<%= data.options[propName].value %>"><%= data.options[propName].label %> </option><% }
-} %></select></div>
+<div class="property <%= data.className %>" data-prop-name="<%= data.className %>"><a class="dropdown-button grey btn property__label" href="#" data-prop-label="<%= data.label %>" data-activates="dropdown-<%= data.className %>"><%= data.value || data.label %></a><ul class="dropdown-content property__input <%= data.className %>" id="dropdown-<%= data.className %>"><% for (var propName in data.options) {
+    if (data.options.hasOwnProperty(propName)) { %><li class="property-option"><a class="property-option__value" href="#!" data-value="<%= data.options[propName].value %>"><%= data.options[propName].label %></a></li><%     }
+} %></ul></div>

@@ -12,9 +12,9 @@
 - `gulp-utils` provides easy compilation of javascript, stylus, and pug/jade files.
     + you can can read more about how it works on its [github repo](https://github.com/khalidhoffman/gulp-utils.git)
     + `gulp --tasks` shows a list of all possible tasks, but you'll probably only want to use:
-       + `gulp build-js` - bundles and minifies javascript
+       + `gulp build-js` - bundles and minifies javascript. (specify this is not a dp-boilerplate project if asked)
        + `gulp pug-php` - compiles `admin/pug/*.pug` and `public/pug/*.pug` files
-       + `gulp pug-js` - compiles `public/javascript/modules/views/html/*.pug` files to `.ejs` files
+       + `gulp pug-ejs` - compiles `public/javascript/modules/views/html/*.pug` files to `.ejs` files
 
 
 ###To Do

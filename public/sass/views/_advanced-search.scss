@@ -1,5 +1,6 @@
 .advanced-options-view {
   font-family: sans-serif;
+  width: auto;
   display: none;
 
   &.remodal {
@@ -9,7 +10,7 @@
   &__wrap {
 
     .property {
-      text-align: left;
+      text-align: center;
 
       &__wrap {
 
@@ -29,5 +30,9 @@
   .remodal-confirm {
     border-radius: 0;
     margin: 0 6px;
+  }
+
+  .property {
+    margin-bottom: 1em;
   }
 }

@@ -2,6 +2,7 @@
     name: 'production-build',
     baseUrl: "./",
     optimize: 'uglify2',
+    context: null,
     uglify2 : {
         compress : {
             drop_console : true,

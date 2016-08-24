@@ -1,0 +1,66 @@
+include _auto-generated/_-all
+.pet-details(data-details-id!="<%= model.get('petId') %>")
+    .pet-details__wrap
+        button(data-remodal-action="close", class="remodal-close")
+        .petProps
+            .pet-photos
+                .pet-name
+                    .pet-name__text!="<%= model.get('petName') %>"
+                .pet-photos__wrap.pet-photo-slider
+                    :ejs
+                        var images = model.get('images'),
+                            numOfImages = images.length;
+                        for(var imageIndex = 0; imageIndex < numOfImages; imageIndex++){ 
+                    .pet-photo
+                        .pet-photo__placeholder(style!=bg("<%= images[imageIndex] %>"))
+                    :ejs
+                        };
+            .menu.menu--pet
+                .menu__wrap
+                    .menu__content
+                        .menu-item.menu-item--tel
+                            a.menu-item__link(href!="tel:<%= menu.get('tel') %>")
+                                .menu-item__icon
+                                    i.material-icons phone
+                                .menu-item__text Call
+                        .menu-item.menu-item--email
+                            a.menu-item__link(href!="mailto:<%= menu.get('email') %>")
+                                .menu-item__icon
+                                    i.material-icons email
+                                .menu-item__text Email
+                        .menu-item.menu-item--link
+                            a.menu-item__link(target!='_blank', href!="<%= menu.get('web') %>")
+                                .menu-item__icon
+                                    i.material-icons web
+                                .menu-item__text Website
+            .pet-props
+                .pet-props__wrap
+                    -
+                        var props = [
+                            { 
+                                label : 'Gender', 
+                                name : 'sex', 
+                            },
+                            { 
+                                label : 'Age', 
+                                name : 'age', 
+                            },
+                            { 
+                                label : 'Size', 
+                                name : 'size', 
+                            },
+                            { 
+                                label : 'Location', 
+                                name : 'shelterAddrCity', 
+                            }
+                        ];
+                    each prop in props
+                        .pet-prop
+                            .pet-prop__content
+                                .pet-prop__name!=prop.label
+                                .pet-prop__value!="<%= model.get('"+prop.name+"') || 'N/A' %>"
+                    .pet-prop.pet-prop--description
+                        .pet-prop__content
+                            .pet-prop__name Description
+                            .pet-prop__value!="<%= model.get('description') %>"
+        button(data-remodal-action="confirm", class="remodal-confirm") OK

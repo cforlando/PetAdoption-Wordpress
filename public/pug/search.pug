@@ -1,9 +1,14 @@
-include helpers/_-all
+include _auto-generated/_-all
 include includes/_mixins
 #search.search
     script.
         window.PetAdoption = {
-            domain : "!{echo("get_option('pet_adoption_domain')")}"
+            domain : "!{echo("get_option('pet_adoption_domain')")}",
+            contactInfo : {
+                tel : "!{echo("get_option('pet_adoption_tel')")}",
+                email : "!{echo("get_option('pet_adoption_email')")}",
+                web : "!{echo("get_option('pet_adoption_web')")}"
+            }
         };
     .search-heading
         h1.search-heading__text
@@ -27,13 +32,9 @@ include includes/_mixins
                             .advanced-options-view
                                 button(data-remodal-action="close", class="remodal-close")
                                 .advanced-options-view__wrap
-                                    //+text-field({label:'Keywords:', name:'keywords', placeholder: 'keywords'})
                                 button(data-remodal-action="cancel", class="remodal-cancel")!=_e("Cancel")
                                 button(data-remodal-action="confirm", class="remodal-confirm")!=_e('OK')
                     +type-field()
-                    //+search-field({label: 'Breed', name: 'primaryBreed'})
-                    //+search-field({label: 'Size', name: 'size'})
-                    //+search-field({label: 'Gender', name: 'sex'})
             .button.button--submit
                 input.button__input(type='submit', value='Search')
     .search-chips

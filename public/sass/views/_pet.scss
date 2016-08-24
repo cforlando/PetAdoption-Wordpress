@@ -80,11 +80,11 @@ $padding-pet-info-px-sans: 12;
       background-color: $color-light-grey;
       border: 0;
       display: inline-block;
-      padding: em(8);
-      text-decoration: none;
 
       .btn__link {
         text-decoration: none;
+        display: inline-block;
+        padding: em(8);
         box-shadow: none;
         color: $color-black;
       }

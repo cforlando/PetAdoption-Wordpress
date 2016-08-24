@@ -6,7 +6,7 @@
   "basePath" : "default",
   "tasks" : [
     {
-      "name" : "pugjs",
+      "name" : "pug-ejs",
       "input": "public/js/modules/views/html/",
       "output": "public/js/modules/views/html/"
     },
@@ -19,6 +19,10 @@
       "name" : "pug",
       "input": "admin/pug/",
       "output": "admin/partials/"
+    },
+    {
+      "name" : "js-bundle",
+      "input": "public/js/build.js"
     },
     {
       "name" : "js-beautify",
