@@ -82,6 +82,7 @@ class Pet_Adoption_Orlando_Admin {
          * class.
          */
 
+        wp_enqueue_style('thickbox');
         wp_enqueue_style($this->plugin_name, plugin_dir_url(__FILE__) . 'stylesheets/pet-adoption-admin.css', array(), $this->version, 'all');
 
     }
@@ -105,8 +106,10 @@ class Pet_Adoption_Orlando_Admin {
          * class.
          */
 
+        wp_enqueue_script('media-upload');
+        wp_enqueue_script('thickbox');
+        wp_enqueue_script('jquery');
         wp_enqueue_script($this->plugin_name, plugin_dir_url(__FILE__) . 'js/pet-adoption-orlando-admin.js', array('jquery'), $this->version, false);
-
     }
 
     /**
@@ -138,6 +141,7 @@ class Pet_Adoption_Orlando_Admin {
         register_setting($this->plugin_name, $this->option_namespace . '_tel');
         register_setting($this->plugin_name, $this->option_namespace . '_email');
         register_setting($this->plugin_name, $this->option_namespace . '_web');
+        register_setting($this->plugin_name, $this->option_namespace . '_image');
 
     }
 

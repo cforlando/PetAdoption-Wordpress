@@ -151,14 +151,33 @@ $padding-input-fields-px-sans: 12;
 
   .prop-chip {
     display: inline-block;
-    background-color: $color-grey;
-    border-radius: 16px;
+    background-color: lighten($color-grey, 25%);
+    border-radius: 1.75em;
     margin: .25em 1em;
-    padding: .15em .75em;
-    &:after{
-        content: 'x';
-        margin-left: .5em;
-        color: darken($color-grey, 25%);
+    padding: .5em .75em;
+    font-size: 1.25em;
+    font-weight: 500;
+    color: rgba(0,0,0,.6);
+
+    i {
+      font-size: 1.5em;
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
+
+  .chip,
+  .prop-chip {
+
+    .prop-label {
+      display: inline-block;
+      line-height: 1;
+      vertical-align: middle;
+    }
+
+    i {
+      vertical-align: middle;
+      font-size: 1.5em;
     }
   }
 

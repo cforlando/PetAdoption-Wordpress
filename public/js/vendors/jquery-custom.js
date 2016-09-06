@@ -1,3 +1,3 @@
 define([], function () {
-    return jQuery;
+    return jQuery.noConflict( false );
 });

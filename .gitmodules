@@ -28,3 +28,6 @@
 [submodule "public/js/vendors/slick"]
 	path = public/js/vendors/slick
 	url = https://github.com/kenwheeler/slick.git
+[submodule "public/js/vendors/bootstrap-material-design"]
+	path = public/js/vendors/bootstrap-material-design
+	url = https://github.com/FezVrasta/bootstrap-material-design.git

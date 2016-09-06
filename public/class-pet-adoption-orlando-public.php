@@ -76,8 +76,28 @@ class Pet_Adoption_Orlando_Public {
          * between the defined hooks and the functions defined in this
          * class.
          */
-        wp_enqueue_style($this->plugin_name . '_material-icons', "https://fonts.googleapis.com/icon?family=Material+Icons", array(), $this->version, 'all');
-        wp_enqueue_style($this->plugin_name, plugin_dir_url(__FILE__) . 'stylesheets/pet-adoption.css', array(), $this->version, 'all');
+        wp_enqueue_style(
+            $this->plugin_name . '_material-roboto',
+            "//fonts.googleapis.com/css?family=Roboto:300,400,500,700",
+            array(),
+            $this->version,
+            'all'
+        );
+
+        wp_enqueue_style(
+            $this->plugin_name . '_material-icons',
+            "//fonts.googleapis.com/icon?family=Material+Icons",
+            array(),
+            $this->version,
+            'all'
+        );
+
+        wp_enqueue_style($this->plugin_name,
+            plugin_dir_url(__FILE__) . 'stylesheets/pet-adoption.css',
+            array(),
+            $this->version,
+            'all'
+        );
 
     }
 
@@ -104,7 +124,8 @@ class Pet_Adoption_Orlando_Public {
 //        wp_enqueue_script('require', plugin_dir_url(__FILE__) . 'js/vendors/requirejs/require.js', array(), $this->version, false);
 //        wp_enqueue_script('require-config', plugin_dir_url(__FILE__) . 'js/rjs-config.js', array('require'), $this->version, false);
 //        wp_enqueue_script('app', plugin_dir_url(__FILE__) . 'js/app-dev.js', array('require-config', 'cfo-pet-adoption-materialize'), $this->version, false);
-        wp_enqueue_script('cfo-pet-adoption', plugin_dir_url(__FILE__) . 'js/pet-adoption.js', array('cfo-pet-adoption-materialize'), $this->version, true);
+        wp_enqueue_script('app', plugin_dir_url(__FILE__) . 'js/cfo-pas-public.js', array('jquery', 'cfo-pet-adoption-materialize'), $this->version, true);
+//        wp_enqueue_script('cfo-pet-adoption', plugin_dir_url(__FILE__) . 'js/pet-adoption.js', array('cfo-pet-adoption-materialize'), $this->version, true);
     }
 
     function petadoption_view() {

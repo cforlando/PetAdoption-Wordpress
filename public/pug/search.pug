@@ -19,7 +19,7 @@ include includes/_mixins
     .search__wrap
         form.search__form(action!='#!')
             .image
-                .image__placeholder
+                .image__placeholder(style!=bgFromURL("get_option('pet_adoption_image')"))
             .instructions
                 h5.instructions__heading!=_e('Instructions')
                 p.instructions__content!=echo("get_option('pet_adoption_instructions')")

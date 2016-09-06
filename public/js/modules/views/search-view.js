@@ -4,15 +4,18 @@ define([
     'modules/models/search-model',
     'modules/models/pet-data',
     'text!modules/views/html/search-field.ejs',
+    'text!modules/views/html/search-field.ejs',
     'domReady!',
     'selectize',
     'remodal',
+    'underscore',
     'modules/models/pet-collection',
     'backbone'
 ], function (require) {
     var Backbone = require('backbone'),
         NameSpace = require('namespace'),
         selectize = require('selectize'),
+        _ = require('underscore'),
         petData = require('modules/models/pet-data'),
         SearchModel = require('modules/models/search-model'),
         PetList = require('modules/models/pet-collection'),
@@ -31,13 +34,13 @@ define([
                 'submit form': 'onSubmit',
                 'change form .field--species select': 'onPetTypeChange',
                 'click .toggle--advanced-options .toggle__link': 'onToggleAdvancedOptions',
-                'click .chip' : 'onClickPropChip'
+                'click .chip': 'onClickPropChip'
             },
             onPetTypeChange: function () {
                 SearchModel.set('species', this.$activeType.val());
                 this.renderSearchFields();
             },
-            onSearchModelChange : function(){
+            onSearchModelChange: function () {
                 this.renderSearchChips();
                 this.updateSearchFieldValues();
             },
@@ -46,20 +49,20 @@ define([
                 // this.$el.toggleClass("advanced-view");
                 this.searchFieldsView.open();
                 Backbone.$(document).one('closed', '.remodal', function (evt) {
-                    if(evt.reason && evt.reason == 'confirmation') {
+                    if (evt.reason && evt.reason == 'confirmation') {
                         /*
-                        var $field,
-                            fieldVal;
-                        _.forEach(SearchModel.visibleFields, function (fieldName, index){ 
-                            $field = self.$searchFields.find('.property__input.' + fieldName);
-                            fieldVal = $field.val() || $field.attr('data-value');
-                            if(fieldVal){
-                                SearchModel.set(fieldName, fieldVal);
-                            } else {
-                                SearchModel.unset(fieldName);
-                            }
-                        })
-                        */
+                         var $field,
+                         fieldVal;
+                         _.forEach(SearchModel.visibleFields, function (fieldName, index){
+                         $field = self.$searchFields.find('.property__input.' + fieldName);
+                         fieldVal = $field.val() || $field.attr('data-value');
+                         if(fieldVal){
+                         SearchModel.set(fieldName, fieldVal);
+                         } else {
+                         SearchModel.unset(fieldName);
+                         }
+                         })
+                         */
                     } else {
                         _.forEach(SearchModel.visibleFields, function (fieldName, index) {
                             SearchModel.unset(fieldName);
@@ -67,7 +70,7 @@ define([
                     }
                 });
             },
-            onClickValue : function(evt){
+            onClickValue: function (evt) {
                 evt.preventDefault();
                 var $optionValue = Backbone.$(evt.currentTarget),
                     $property = $optionValue.parents('.property'),
@@ -75,8 +78,8 @@ define([
                     value = $optionValue.attr('data-value');
 
                 SearchModel.set(propName, value);
-            }, 
-            onClickPropChip : function(evt){
+            },
+            onClickPropChip: function (evt) {
                 var propName = this.$(evt.currentTarget).attr('data-prop-name');
                 SearchModel.unset(propName);
             },
@@ -84,7 +87,7 @@ define([
                 if (evt && evt.preventDefault) evt.preventDefault();
                 console.log('submitted: %O', SearchModel.toJSON());
                 var self = this,
-                    query = _.pickBy(SearchModel.toJSON(), function(propVal, propName){
+                    query = _.pickBy(SearchModel.toJSON(), function (propVal, propName) {
                         return propVal;
                     });
                 console.log('Searching %o', query);
@@ -94,34 +97,38 @@ define([
                             throw err;
                         } else {
                             PetList.reset(result);
-                        };
+                        }
+                        ;
                         console.log('result: %O', err || result);
                     }
                 });
             },
-            inputTemplate: require('text!modules/views/html/search-field.ejs'),
-            updateSearchFieldValues : function(){
+            updateSearchFieldValues: function () {
                 var self = this;
-                Backbone.$('.property').each(function(index, el){
+                Backbone.$('.property').each(function (index, el) {
                     var $property = Backbone.$(el),
                         $dropdownButton = $property.find('.dropdown-button');
                     $dropdownButton.html(SearchModel.get($property.attr('data-prop-name')) || $dropdownButton.attr('data-prop-label'));
                 });
             },
-            renderSearchChips : function(){
+            searchPropCompiler: _.template(require('text!modules/views/html/search-prop.ejs')),
+            renderSearchChips: function () {
                 var self = this;
                 this.$searchChips.html('');
-                _.forEach(SearchModel.attributes, function(propVal, propName){
-                    if(propVal){
-                        self.$searchChips.append("<div class='chip' data-prop-name='"+ propName + "'>" + propVal + "<i class='close material-icons'>close</i></div>");
+                _.forEach(SearchModel.attributes, function (propVal, propName) {
+                    if (propVal) {
+                        self.$searchChips.append(self.searchPropCompiler({
+                            propName : propName,
+                            propVal : propVal
+                        }));
                     }
                 });
             },
+            searchFieldCompiler: _.template(require('text!modules/views/html/search-field.ejs'), {
+                variable: 'data'
+            }),
             renderSearchFields: function () {
                 var self = this,
-                    searchFieldCompiler = _.template(self.inputTemplate, {
-                        variable: 'data'
-                    }),
                     permittedSearchFields = SearchModel.visibleFields,
                     activePetType = SearchModel.get('species'),
                     petProps = petData.get(activePetType),
@@ -139,11 +146,11 @@ define([
                 for (var propName in petProps) {
                     if (petProps.hasOwnProperty(propName) && _.indexOf(permittedSearchFields, propName) >= 0) {
                         if (petProps[propName].options && petProps[propName].options.length > 1) {
-                            var searchFieldHTML = searchFieldCompiler({
+                            var searchFieldHTML = this.searchFieldCompiler({
                                     label: petProps[propName]['fieldLabel'],
                                     props: petProps[propName],
                                     className: propName,
-                                    value : SearchModel.get(propName),
+                                    value: SearchModel.get(propName),
                                     options: petProps[propName].options.map(function (val, index) {
                                         return {
                                             value: val,
@@ -151,12 +158,19 @@ define([
                                         }
                                     })
                                 }),
-                                $searchField = Backbone.$(searchFieldHTML);
+                                $searchField = Backbone.$(searchFieldHTML),
+                                $dropdown = $searchField.find('.dropdown-button');
+
                             $searchFieldBlock.append($searchField);
-                            $searchField.find('.property-option__value').on('click', function(){
+                            console.log('SearchView.renderSearchFields() - rendering %s (%o) on (%o)', propName, $searchField, $searchFieldBlock);
+                            $dropdown.dropdown({});
+                            $searchField.find('.property-option__value').on('click', function () {
                                 self.onClickValue.apply(self, arguments);
+                                var $parentDropdown = Backbone.$(this).parents('.dropdown-content').siblings('.dropdown-button');
+                                console.log('closing %o', $parentDropdown);
+                                $parentDropdown.dropdown('close');
+                                return false;
                             });
-                            $searchField.find('.dropdown-button').dropdown({});
                         }
                     }
                 }

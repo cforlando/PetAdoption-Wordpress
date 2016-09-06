@@ -1,4 +1,4 @@
-require([
+define([
     'require',
     'live',
     'modules/views/search-view',

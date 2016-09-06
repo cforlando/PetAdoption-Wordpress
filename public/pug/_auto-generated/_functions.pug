@@ -136,3 +136,6 @@
     function php(str) {
         return util.format('<?php %s ?>', str);
     }
+    function buildClassListStr(blockClass, classList){
+        return classList.map(function(className){ return blockClass + '--' + className; }).join(' ');
+    }

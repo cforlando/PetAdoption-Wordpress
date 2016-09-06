@@ -1,3 +1,16 @@
+@import "../helpers/-all";
 /*	==================================================
 	Settings
 	==================================================  */
+
+.image-value{
+  display: inline-block;
+  vertical-align: middle;
+  white-space: nowrap;
+  margin-left: 1em;
+  max-width: 50%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: .25em;
+  background-color: lighten($color-grey, 25%);
+}

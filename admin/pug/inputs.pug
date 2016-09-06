@@ -6,8 +6,32 @@ include includes/_mixins
     $tel = get_option($this->option_namespace . '_tel');
     $email = get_option($this->option_namespace . '_email');
     $web = get_option($this->option_namespace . '_web');
+    $image = get_option($this->option_namespace . '_image');
     $directions = get_option($this->option_namespace . '_instructions');
 fieldset
+    .input-field
+        script.
+            jQuery(document).ready(function() {
+                jQuery('#!{echo("$this->option_namespace . '_image_button'")}').click(function () {
+                    formfield = jQuery('#!{echo("$this->option_namespace . '_image'")}').attr('name');
+                    tb_show('', 'media-upload.php?type=image&TB_iframe=true');
+                    return false;
+                });
+
+                window.send_to_editor = function(html) {
+                    console.log('sending to editor');
+                    var imgurl = jQuery('img',html).attr('src'),
+                        $imageInput = jQuery('#!{echo("$this->option_namespace . '_image'")}');
+                    $imageInput.val(imgurl);
+                    jQuery('#!{echo("$this->option_namespace . '_image_value'")}').html($imageInput.val());
+                    tb_remove();
+                }
+
+            });
+        label !{_e("Image")}:
+        input(type='text', hidden, name!=echo("$this->option_namespace . '_image'"), id!=echo("$this->option_namespace . '_image'"), value!=echo("$image"))
+        input(type='button' name!=echo("$this->option_namespace . '_image_button'"), id!=echo("$this->option_namespace . '_image_button'"), value!=_e("Upload Image"))
+        span.image-value(id!=echo("$this->option_namespace . '_image_value'"))!=_e("Current: ") + echo("basename($image)")
     .input-field
         label !{_e("Domain")}:
         input(type='text' name!=echo("$this->option_namespace . '_domain'"), id!=echo("$this->option_namespace . '_domain'"), value!=echo("$domain"))
