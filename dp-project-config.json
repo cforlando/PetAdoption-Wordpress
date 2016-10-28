@@ -25,6 +25,10 @@
       "input": "public/js/build.js"
     },
     {
+      "name" : "js-webpack",
+      "input": "public/js/webpack.config.js"
+    },
+    {
       "name" : "js-beautify",
       "input": "public/js/modules/"
     },
