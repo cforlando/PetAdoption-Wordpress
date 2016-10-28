@@ -143,15 +143,16 @@ define([
                 $searchFieldBlock.empty();
 
                 // render search fields
-                for (var propName in petProps) {
-                    if (petProps.hasOwnProperty(propName) && _.indexOf(permittedSearchFields, propName) >= 0) {
-                        if (petProps[propName].options && petProps[propName].options.length > 1) {
-                            var searchFieldHTML = this.searchFieldCompiler({
-                                    label: petProps[propName]['fieldLabel'],
-                                    props: petProps[propName],
+                _.forEach(petProps, function(petPropData, index){_
+                    var propName = petPropData.key;
+                    if (_.includes(permittedSearchFields, propName)) {
+                        if (petPropData.options && petPropData.options.length > 1) {
+                            var searchFieldHTML = self.searchFieldCompiler({
+                                    label: petPropData['fieldLabel'],
+                                    props: petPropData,
                                     className: propName,
                                     value: SearchModel.get(propName),
-                                    options: petProps[propName].options.map(function (val, index) {
+                                    options: petPropData.options.map(function (val, index) {
                                         return {
                                             value: val,
                                             label: val
@@ -166,14 +167,15 @@ define([
                             $dropdown.dropdown({});
                             $searchField.find('.property-option__value').on('click', function () {
                                 self.onClickValue.apply(self, arguments);
-                                var $parentDropdown = Backbone.$(this).parents('.dropdown-content').siblings('.dropdown-button');
+                                var $parentDropdown = Backbone.$(self).parents('.dropdown-content').siblings('.dropdown-button');
                                 console.log('closing %o', $parentDropdown);
                                 $parentDropdown.dropdown('close');
                                 return false;
                             });
                         }
                     }
-                }
+
+                });
             },
             render: function () {
                 var self = this;
