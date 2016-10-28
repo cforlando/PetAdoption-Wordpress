@@ -167,7 +167,7 @@ define([
                             $dropdown.dropdown({});
                             $searchField.find('.property-option__value').on('click', function () {
                                 self.onClickValue.apply(self, arguments);
-                                var $parentDropdown = Backbone.$(self).parents('.dropdown-content').siblings('.dropdown-button');
+                                var $parentDropdown = Backbone.$(this).parents('.dropdown-content').siblings('.dropdown-button');
                                 console.log('closing %o', $parentDropdown);
                                 $parentDropdown.dropdown('close');
                                 return false;
