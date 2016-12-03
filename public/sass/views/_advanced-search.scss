@@ -1,35 +1,59 @@
 .advanced-options-view {
-  font-family: sans-serif;
   width: auto;
   display: none;
+
+  &__wrap {
+
+  }
+
+  .field__select {
+    display: block;
+    appearance: none;
+    width: 100%;
+    height: 2rem;
+    padding: 0 1ch;
+    margin: 0.5rem 0;
+  }
 
   &.remodal {
     display: inline-block;
   }
 
-  &__wrap {
+  .property {
+    text-align: center;
 
-    .property {
-      text-align: center;
-
-      &__wrap {
-
-      }
+    &__input{
+      width: 100%;
     }
-  }
 
+    &__wrap {
 
-  .remodal-close{
-
-    &:hover {
-      background: none;
     }
   }
 
   .remodal-cancel,
   .remodal-confirm {
-    border-radius: 0;
     margin: 0 6px;
+  }
+
+  .remodal-confirm {
+    background-color: $color-primary;
+    &:hover {
+      background-color: $color-primary-darker;
+    }
+  }
+
+  .remodal-cancel{
+    background-color: $color-primary-alt;
+    &:hover {
+      background-color: $color-primary-alt-darkest;
+    }
+  }
+
+  .remodal-close{
+    &:hover {
+      background: none;
+    }
   }
 
   .property {

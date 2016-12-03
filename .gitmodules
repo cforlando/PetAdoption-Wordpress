@@ -22,12 +22,6 @@
 [submodule "public/js/vendors/backbone"]
 	path = public/js/vendors/backbone
 	url = https://github.com/jashkenas/backbone.git
-[submodule "public/js/vendors/materialize"]
-	path = public/js/vendors/materialize
-	url = https://github.com/Dogfalo/materialize.git
 [submodule "public/js/vendors/slick"]
 	path = public/js/vendors/slick
 	url = https://github.com/kenwheeler/slick.git
-[submodule "public/js/vendors/bootstrap-material-design"]
-	path = public/js/vendors/bootstrap-material-design
-	url = https://github.com/FezVrasta/bootstrap-material-design.git

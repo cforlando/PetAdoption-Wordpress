@@ -3,92 +3,35 @@
 	==================================================  */
 $padding-pet-info-px-sans: 12;
 .pet {
-  @include inline-block(top);
-  width: em(400);
-  max-width: 100%;
-  margin: 0 auto;
-  min-width: (100% /3);
-  padding: 2em 0 1em;
-  text-align: center;
+  padding: 2rem 1rem;
 
-  &__container {
 
-  }
-
-  &__wrap {
-
-  }
-
-  .pet-name {
-
-  }
   .pet-photo {
-    @include inline-block();
-    max-width: em(200);
-    width: 100%;
-    padding-bottom: 1em;
-
-    &__placeholder {
-      @include pet-photo();
-    }
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 5rem;
+    width: 5rem;
+    background: green center no-repeat;
+    background-size: cover;
+    border-radius: 50%;
+    margin: 0 auto;
   }
 
-  .pet-info {
-
-    &__wrap {
-
-    }
-    p {
-      margin: 0 auto;
-    }
-
+  .pet__wrap {
+    //padding-left: 6rem;
   }
 
-  .pet-info-size,
-  .pet-info-sex,
-  .pet-info-breed {
-
-    &__wrap {
-      padding-bottom: em($padding-pet-info-px-sans);
-    }
+  .pet-name__text {
+    font-size: 1.5rem;
+    margin: 0;
+    margin-bottom: 0.5rem;
   }
 
-  .pet-info-breed {
-
-    &__wrap {
-
-    }
+  .btn__link,
+  .toggle__link {
+    color: $color-link;
+    white-space: nowrap;
   }
-
-  .pet-info-size {
-
-    &__wrap {
-
-    }
-  }
-
-  .pet-info-sex {
-
-    &__wrap {
-
-    }
-  }
-
-  .btn {
-
-    &--more-info {
-      background-color: $color-light-grey;
-      border: 0;
-      display: inline-block;
-
-      .btn__link {
-        text-decoration: none;
-        display: inline-block;
-        padding: em(8);
-        box-shadow: none;
-        color: $color-black;
-      }
-    }
-  }
-
 }

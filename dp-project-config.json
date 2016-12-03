@@ -1,9 +1,6 @@
 {
   "name": "boilerplate",
-  "dbTablePrefix": "boilerplate",
-  "dbNamePrefix" : "hugoazz_",
-  "avocodeSelector" : "boilerplate",
-  "basePath" : "default",
+  "workingDir" : "default",
   "tasks" : [
     {
       "name" : "pug-ejs",
@@ -11,12 +8,12 @@
       "output": "public/js/modules/views/html/"
     },
     {
-      "name" : "pug",
+      "name" : "pug-php",
       "input": "public/pug/",
       "output": "public/partials/"
     },
     {
-      "name" : "pug",
+      "name" : "pug-php",
       "input": "admin/pug/",
       "output": "admin/partials/"
     },

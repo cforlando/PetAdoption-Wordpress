@@ -1,111 +1,170 @@
 // template gulpfile
-// working gulpfile should be in root of project
+// working gulpfile should be in root of project and named 'gulpfile.js'
 
 var path = require('path'),
 
     gulp = require('gulp'),
 
-    gulpLib = function(moduleName){ return require('gulp-utils/lib/'+path.normalize(moduleName)); },
+    lib = function(moduleName){ return require('gulp-utils/lib/'+path.normalize(moduleName)); },
 
-    project = gulpLib('project'),
-    projectUtils = gulpLib('utils');
+    project = lib('project'),
+    utils = lib('utils');
 
 // dev task that watches and executes appropriate tasks as necessary
 gulp.task('auto', function(){
-    gulp.watch(projectUtils.buildGlobArray(project.tasks['pug'], '/**/*.pug'), ['pug-php']);
-    gulp.watch(projectUtils.buildGlobArray(project.tasks['sass'], '/**/*.scss'), ['sass']);
-    gulp.watch(projectUtils.buildGlobArray(project.tasks['pug-ejs'], '/**/*.pug'), ['pug-ejs']);
-    // gulp.watch(projectUtils.buildGlobArray(project.tasks['jsx'], '!(node_modules|vendors)/**/*.jsx'), ['babel']);
-    // gulp.watch(projectUtils.buildGlobArray(project.tasks['sass'], '/**/*.scss'), ['sass']);
-    // gulp.watch(projectUtils.buildGlobArray(project.tasks['js'],'!(node_modules|vendors)/**/*.js'), ['beautify-js']);
-    gulpLib('project/chrome-sync').start();
+    gulp.watch(utils.buildGlobSelector(project.tasks['pug-php'], '/**/*.pug'), ['pug-php']);
+    // gulp.watch(utils.buildGlobSelector(project.tasks['stylus'], '/**/*.styl'), ['stylus']);
+    // gulp.watch(utils.buildGlobSelector(project.tasks['stylus-bem'], '/**/*.styl'), ['stylus-bem']);
+    // gulp.watch(utils.buildGlobSelector(project.tasks['pug-html'], '/**/*.pug'), ['pug-html']);
+    // gulp.watch(utils.buildGlobSelector(project.tasks['jsx'], '{**,!node_modules,!vendors}/**/*.jsx'), ['babel']);
+    gulp.watch(utils.buildGlobSelector(project.tasks['sass'], '**/*.{scss,sass}'), ['sass']);
+    
+    // autoformat pug files on save
+    //gulp.watch(utils.buildGlobSelector(project.tasks['pug'], '/**/*.pug'), function(event){
+    //    lib('pug').beautify({
+    //        tasks : [
+    //            {
+    //                input : path.dirname(event.path),
+    //                suffix : path.basename(event.path)
+    //            }
+    //        ]
+    //    });
+    //});
+
+    // autoformat javascript files on save
+    gulp.watch(utils.buildGlobSelector(project.tasks['js-beautify'],'/{**,!node_modules,!vendors}/**/*.js'), function(event){
+        lib('javascript').beautify({
+            tasks : [
+                {
+                    input : path.dirname(event.path),
+                    suffix : path.basename(event.path)
+                }
+            ]
+        });
+    });
+
+    // render jsx files on save
+    // gulp.watch(utils.buildGlobSelector(project.tasks['jsx'],'/{**, !node_modules,!vendors}/**/*.jsx'), function(event){
+    //     lib('babel').compile({
+    //         tasks : [
+    //             {
+    //                 input : path.dirname(event.path),
+    //                 output : path.basename(event.path)
+    //             }
+    //         ]
+    //     });
+    // });
 });
 // CSS tasks
 
-gulp.task('stylus', gulpLib('stylus').compile);
+gulp.task('stylus', lib('stylus').compile);
+
+gulp.task('stylus-bem', lib('stylus').compileBEM);
 
 gulp.task('stylus-auto', function(){
-    gulp.watch(projectUtils.buildGlobArray(project.tasks['stylus'], '**/!(_)*.styl'), ['stylus']);
+    gulp.watch(utils.buildGlobSelector(project.tasks['stylus'], '**/*.styl'), ['stylus']);
 });
 
-gulp.task('less', gulpLib('less').compile);
+gulp.task('stylus-bem-auto', function(){
+    gulp.watch(utils.buildGlobSelector(project.tasks['stylus-bem'], '**/*.styl'), ['stylus-bem']);
+});
 
-gulp.task('sass', gulpLib('sass').compile);
+gulp.task('less', lib('less').compile);
 
-gulp.task('sass-debug', gulpLib('sass').debug);
+gulp.task('sass', lib('sass').compile);
 
-gulp.task('compass', gulpLib('sass').compass);
+gulp.task('sass-debug', lib('sass').debug);
+
+gulp.task('sass-auto', function(){
+    gulp.watch(utils.buildGlobSelector(project.tasks['sass'], '**/*.{scss,sass}'), ['sass']);
+});
+
+gulp.task('compass', lib('sass').compass);
 
 
 // Pug/Jade tasks
-gulp.task('pug-2-stylus', gulpLib('pug').pug2Stylus);
+gulp.task('pug-2-stylus', lib('pug').pug2Stylus);
 
-gulp.task('pug-php', gulpLib('pug').php);
+gulp.task('pug-php', lib('pug').php);
 
 gulp.task('pug-php-auto', function(){
-    gulp.watch(projectUtils.buildGlobArray(project.tasks['pug'], '/**/*.pug'), ['pug-php']);
+    gulp.watch(utils.buildGlobSelector(project.tasks['pug-php'], '/**/*.pug'), ['pug-php']);
 });
 
-gulp.task('pug-html', gulpLib('pug').html);
+gulp.task('pug-html', lib('pug').html);
 
 gulp.task('pug-html-auto', function(){
-    gulp.watch(projectUtils.buildGlobArray(project.tasks['pug-html'], '/**/*.pug'), ['pug-html']);
+    gulp.watch(utils.buildGlobSelector(project.tasks['pug-html'], '/**/*.pug'), ['pug-html']);
 });
 
-gulp.task('pug-php-debug', gulpLib('pug').phpDebug);
+gulp.task('pug-php-debug', lib('pug').phpDebug);
 
-gulp.task('pug-ejs', gulpLib('pug').ejs);
+gulp.task('pug-ejs', lib('pug').ejs);
 
 gulp.task('pug-ejs-auto', function(){
-    gulp.watch(projectUtils.buildGlobArray(project.tasks['pug-ejs'], '/**/*.pug'), ['pug-ejs']);
+    gulp.watch(utils.buildGlobSelector(project.tasks['pug-ejs'], '/**/*.pug'), ['pug-ejs']);
 });
 
-gulp.task('html-2-pug', gulpLib('pug').html2Pug);
+gulp.task('html-2-pug', lib('pug').html2Pug);
 
-gulp.task('php-2-pug', gulpLib('pug').php2Pug);
+gulp.task('php-2-pug', lib('pug').php2Pug);
 
-gulp.task('jade-php', gulpLib('jade').php);
+gulp.task('jade-php', lib('jade').php);
 
-gulp.task('jade-ejs', gulpLib('jade').ejs);
+gulp.task('jade-ejs', lib('jade').ejs);
 
-gulp.task('jade-html', gulpLib('jade').html);
+gulp.task('jade-html', lib('jade').html);
 
-gulp.task('pug-beautify', gulpLib('pug').beautify);
+gulp.task('pug-beautify', lib('pug').beautify);
 
 
 // Javascript tasks
-gulp.task('build-js-config', gulpLib('javascript').config);
+gulp.task('build-js-config', lib('javascript').config);
 
-gulp.task('beautify-js', gulpLib('javascript').beautify);
+gulp.task('beautify-js', lib('javascript').beautify);
 
 gulp.task('beautify-js-auto', function(){
-    gulp.watch(projectUtils.buildGlobArray(project.tasks['js'], '!(node_modules|vendors)/**/*.js'), ['beautify-js']);
+    gulp.watch(utils.buildGlobSelector(project.tasks['js-beautify'],'/{**,!node_modules,!vendors}/**/*.js'), function(event){
+        lib('javascript').beautify({
+            tasks : [
+                {
+                    input : path.dirname(event.path),
+                    suffix : path.basename(event.path)
+                }
+            ]
+        });
+    });
 });
 
-gulp.task('test-js', gulpLib('javascript').test);
+gulp.task('test-js', lib('javascript').test);
 
-gulp.task('build-js', gulpLib('javascript').build);
+gulp.task('build-js', lib('javascript').build);
 
+gulp.task('build-webpack', lib('javascript').buildWebpack);
+
+gulp.task('build-rjs', lib('javascript').buildRequireJS);
+
+gulp.task('jsx', lib('babel').compile);
 
 //WordPress tasks
-gulp.task('init-wp-config', gulpLib('wordpress').init);
+gulp.task('init-wp-config', lib('wordpress').init);
 
-gulp.task('init-project',  gulpLib('project').init);
+gulp.task('init-project',  lib('project').init);
 
-gulp.task('init-avocode', gulpLib('avocode').init);
+gulp.task('init-avocode', lib('avocode').init);
 
 
 // Babel tasks
-gulp.task('babel', gulpLib('babel').compile);
+gulp.task('babel', lib('babel').compile);
 
 gulp.task('babel-auto', function(){
-    gulp.watch(projectUtils.buildGlobArray(project.tasks['jsx'], '!(node_modules|vendors)/**/*.jsx'), ['babel']);
+    gulp.watch(utils.buildGlobSelector(project.tasks['jsx'], '{**,!node_modules,!vendors)/**/*.jsx'), ['babel']);
 });
 
 
 // Project tasks
-gulp.task('ftp', gulpLib('ftp').sync);
+gulp.task('ftp', lib('ftp').sync);
 
 gulp.task('ftp-auto', function(){
-    gulp.watch(projectUtils.buildGlobArray(project.tasks['ftp'], ''), ['ftp']);
+    gulp.watch(utils.buildGlobSelector(project.tasks['ftp'], ''), ['ftp']);
 });

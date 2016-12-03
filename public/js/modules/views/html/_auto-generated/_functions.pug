@@ -85,13 +85,13 @@
     }
 
     function echoImgURLFromField(field, size, id) {
-        var _size = size ? "'" + size + "'": 'null',
+        var _size = size ? util.format("'%s'", size) : 'null',
             _id = id || 'null';
         return echo(util.format("get_image_field_url('%s', %s, %s);",field, _id, _size))
     }
 
     function bgFromField(field, id, size) {
-        return bg(echoImgURLFromField(field, id, size));
+        return bg(echoImgURLFromField(field, size, id));
     }
 
     function echoFeaturedImage(size, isIcon, id){

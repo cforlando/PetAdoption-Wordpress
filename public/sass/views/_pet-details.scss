@@ -1,134 +1,152 @@
 /*	==================================================
 	Pet Details View
 	==================================================  */
-        
 
 .pet-details {
-    font-family: sans-serif;
-   &__wrap {
-        padding: 0;
-   }
-   .pet-photos,
-   .pet-photo{
-        height: 30em;
-        height: 40vh;
-        max-height : 30em;
-   }
+  font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
 
-   .pet-photos {
-        position: relative;
-   }
-   
-   .slick-dots {
-        bottom: 25px;
+  &__wrap {
+    padding: 0;
+    border-radius: 0.3rem;
+    overflow: hidden;
+  }
+
+  .pet-photos,
+  .pet-photo {
+    height: 30em;
+    height: 40vh;
+    max-height: 30em;
+  }
+
+  .pet-photos {
+    position: relative;
+  }
+
+  .slick-dots {
+    bottom: 25px;
+  }
+
+  .slick-next,
+  .slick-prev {
+    z-index: 1;
+  }
+
+  .slick-next {
+    right: 24px;
+  }
+
+  .slick-prev {
+    left: 24px;
+  }
+  .pet-name {
+    position: absolute;
+    bottom: 1em;
+    left: 1em;
+    z-index: 3;
+
+    &__text {
+      font-size: 2.5em;
+      color: $color-white;
+    }
+  }
+
+  .pet-photo {
+    background-color: $color-dark-gray;
+    width: 100%;
+
+    &__placeholder {
+      @include image-placeholder();
+      transform: translate3d(0, 0, 0);
+      background-position: center 25%;
+      height: 100%;
+      width: 100%;
+    }
+  }
+  .menu {
+    border-bottom: 1px solid $color-light-grey;
+
+    &__content {
+      display: flex;
+      justify-content: space-between;
     }
 
-    .slick-next,
-    .slick-prev {
-        z-index: 1;
+    &__wrap {
+      max-width: em(480);
+      margin: 0 auto;
+      padding: 0 1.5em;
+    }
+  }
+  .menu-item {
+    display: inline-block;
+    &__link {
+      transition: color 250ms ease;
+      display: inline-block;
+      vertical-align: middle;
+      padding: em(12);
+      color: $color-dark-gray;
+
+      &:hover {
+        color: $color-black;
+      }
+    }
+  }
+
+  .pet-props {
+
+    &__wrap {
+      display: flex;
+      flex-wrap: wrap;
+      padding-bottom: 1.5em;
+    }
+  }
+
+  .pet-prop {
+    $block: &;
+    padding: em(12);
+    display: inline-flex;
+    flex: 1 1 50%;
+    text-align: left;
+
+    &--description {
+      border-top: 1px solid $color-light-grey;
+
+      .pet-prop__name {
+        font-size: 1.25em;
+      }
+
+      .pet-prop__value {
+        font-weight: normal;
+      }
     }
 
-    .slick-next {
-        right: 24px;
+    &__value {
+      font-weight: 600;
     }
-   
-    .slick-prev {
-        left: 24px;
+  }
+
+  .remodal-confirm {
+    background-color: $color-primary;
+    width: 100%;
+    border-radius: 0;
+    &:hover {
+      background-color: $color-primary-darker;
     }
-   .pet-name {
-        position: absolute;
-        bottom : 1em;
-        left: 1em;
-        z-index: 3;
+  }
 
-        &__text {
-            font-size: 2.5em;
-            color: $color-white;
-        }
-   }
-
-   .pet-photo {
-        background-color: $color-dark-gray;
-        width: 100%;
-
-        &__placeholder {
-            @include image-placeholder();
-            @include translate3d(0,0,0);
-            background-position: center 25%;
-            height: 100%;
-            width: 100%;
-        }
-   }
-   .menu {
-        border-bottom: 1px solid $color-light-grey;
-
-        &__content{
-            @include display-flex(flex);
-            @include justify-content(space-between);
-        }
-
-        &__wrap{
-            max-width: em(480);
-            margin: 0 auto;
-            padding: 0 1.5em;
-        }
-   }
-   .menu-item {
-        display: inline-block;
-        &__link {
-            @include transition(color, 250ms, ease);
-            @include inline-block();
-            padding: em(12);
-            color: $color-dark-gray;
-
-            &:hover {
-                color: $color-black;
-            }
-        }
-   }
-
-   .pet-props {
-
-        &__wrap {
-            @include display-flex(flex);
-            @include flex-wrap(wrap);
-            padding-bottom: 1.5em;
-        }
-   }
-
-   .pet-prop{
-        $block: &;
-        padding: em(12);
-        @include display-flex(inline-flex);
-        flex: 1 1 50%;
-        text-align: left;
-
-        &--description {
-            border-top: 1px solid $color-light-grey; 
-
-            .pet-prop__name {
-                font-size: 1.25em;
-            }
-
-            .pet-prop__value {
-                font-weight: normal;
-            }
-        }
-        
-        &__value {
-            font-weight: 600;
-        }
-   }
-
-    .remodal-confirm {
-        width: 100%;
-        border-radius: 0;
+  .remodal-cancel {
+    background-color: $color-secondary;
+    width: 100%;
+    border-radius: 0;
+    &:hover {
+      background-color: $color-secondary-dark;
     }
-    .remodal-close {
-        z-index: 2;
-        &:hover{
-            background-color: transparent;
-        }
+  }
+
+  .remodal-close {
+    z-index: 2;
+    &:hover {
+      background-color: transparent;
     }
+  }
 
 }

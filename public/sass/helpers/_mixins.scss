@@ -268,3 +268,24 @@
   overflow: hidden;
   width: 100%;
 }
+
+%serif {
+  font-family: Merriweather, Georgia, serif;
+}
+
+%button {
+  @extend %serif;
+  appearance: none;
+  display: block;
+  background: $color-secondary;
+  color: white;
+  border: none;
+  width: 100%;
+  padding: 1rem;
+  transition: background 0.3s ease-in-out;
+  cursor: pointer;
+  
+  &:hover {
+    background: $color-secondary-dark;
+  }
+}

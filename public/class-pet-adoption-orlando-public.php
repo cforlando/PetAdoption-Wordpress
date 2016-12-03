@@ -120,12 +120,8 @@ class Pet_Adoption_Orlando_Public {
          * class.
          */
 
-        wp_enqueue_script('cfo-pet-adoption-materialize', plugin_dir_url(__FILE__) . 'js/materialize.js', array('jquery'), $this->version, true);
-//        wp_enqueue_script('require', plugin_dir_url(__FILE__) . 'js/vendors/requirejs/require.js', array(), $this->version, false);
-//        wp_enqueue_script('require-config', plugin_dir_url(__FILE__) . 'js/rjs-config.js', array('require'), $this->version, false);
-//        wp_enqueue_script('app', plugin_dir_url(__FILE__) . 'js/app-dev.js', array('require-config', 'cfo-pet-adoption-materialize'), $this->version, false);
-        wp_enqueue_script('app', plugin_dir_url(__FILE__) . 'js/cfo-pas-public.js', array('jquery', 'cfo-pet-adoption-materialize'), $this->version, true);
-//        wp_enqueue_script('cfo-pet-adoption', plugin_dir_url(__FILE__) . 'js/pet-adoption.js', array('cfo-pet-adoption-materialize'), $this->version, true);
+        wp_enqueue_script('live-js', plugin_dir_url(__FILE__) . 'js/vendors/live.js', array(), $this->version, true);
+        wp_enqueue_script('app', plugin_dir_url(__FILE__) . 'js/cfo-pas-public.js', array('jquery'), $this->version, true);
     }
 
     function petadoption_view() {

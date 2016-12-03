@@ -11,7 +11,7 @@ define([
     'underscore',
     'modules/models/pet-collection',
     'backbone'
-], function (require) {
+], function(require) {
     var Backbone = require('backbone'),
         NameSpace = require('namespace'),
         selectize = require('selectize'),
@@ -20,7 +20,7 @@ define([
         SearchModel = require('modules/models/search-model'),
         PetList = require('modules/models/pet-collection'),
         SearchView = Backbone.View.extend({
-            initialize: function () {
+            initialize: function() {
                 this.$form = this.$('form');
                 this.$activeType = this.$form.find('.field--species select');
                 this.$searchFields = this.$('.advanced-options-view');
@@ -33,44 +33,41 @@ define([
             events: {
                 'submit form': 'onSubmit',
                 'change form .field--species select': 'onPetTypeChange',
-                'click .toggle--advanced-options .toggle__link': 'onToggleAdvancedOptions',
+                'click .button--advanced-options': 'onToggleAdvancedOptions',
                 'click .chip': 'onClickPropChip'
             },
-            onPetTypeChange: function () {
+            onPetTypeChange: function() {
                 SearchModel.set('species', this.$activeType.val());
                 this.renderSearchFields();
             },
-            onSearchModelChange: function () {
+            onSearchModelChange: function() {
                 this.renderSearchChips();
-                this.updateSearchFieldValues();
             },
-            onToggleAdvancedOptions: function (evt) {
+            onToggleAdvancedOptions: function(evt) {
                 if (evt && evt.preventDefault) evt.preventDefault();
-                // this.$el.toggleClass("advanced-view");
+                var self = this;
                 this.searchFieldsView.open();
-                Backbone.$(document).one('closed', '.remodal', function (evt) {
+                Backbone.$(document).one('closed', '.remodal', function(evt) {
                     if (evt.reason && evt.reason == 'confirmation') {
-                        /*
-                         var $field,
-                         fieldVal;
-                         _.forEach(SearchModel.visibleFields, function (fieldName, index){
-                         $field = self.$searchFields.find('.property__input.' + fieldName);
-                         fieldVal = $field.val() || $field.attr('data-value');
-                         if(fieldVal){
-                         SearchModel.set(fieldName, fieldVal);
-                         } else {
-                         SearchModel.unset(fieldName);
-                         }
-                         })
-                         */
+                        var $field,
+                            fieldVal;
+                        _.forEach(SearchModel.visibleFields, function(fieldName, index) {
+                            $field = self.$searchFields.find('.property__input.' + fieldName);
+                            fieldVal = $field.val() || $field.attr('data-value');
+                            if (fieldVal) {
+                                SearchModel.set(fieldName, fieldVal);
+                            } else {
+                                SearchModel.unset(fieldName);
+                            }
+                        })
                     } else {
-                        _.forEach(SearchModel.visibleFields, function (fieldName, index) {
+                        _.forEach(SearchModel.visibleFields, function(fieldName, index) {
                             SearchModel.unset(fieldName);
                         })
                     }
                 });
             },
-            onClickValue: function (evt) {
+            onClickValue: function(evt) {
                 evt.preventDefault();
                 var $optionValue = Backbone.$(evt.currentTarget),
                     $property = $optionValue.parents('.property'),
@@ -79,55 +76,46 @@ define([
 
                 SearchModel.set(propName, value);
             },
-            onClickPropChip: function (evt) {
+            onClickPropChip: function(evt) {
                 var propName = this.$(evt.currentTarget).attr('data-prop-name');
                 SearchModel.unset(propName);
             },
-            onSubmit: function (evt) {
+            onSubmit: function(evt) {
                 if (evt && evt.preventDefault) evt.preventDefault();
                 console.log('submitted: %O', SearchModel.toJSON());
                 var self = this,
-                    query = _.pickBy(SearchModel.toJSON(), function (propVal, propName) {
+                    query = _.pickBy(SearchModel.toJSON(), function(propVal, propName) {
                         return propVal;
                     });
                 console.log('Searching %o', query);
                 petData.findPets(query, {
-                    callback: function (err, result, service) {
+                    callback: function(err, result, service) {
                         if (err) {
                             throw err;
                         } else {
                             PetList.reset(result);
-                        }
-                        ;
+                        };
                         console.log('result: %O', err || result);
                     }
                 });
             },
-            updateSearchFieldValues: function () {
-                var self = this;
-                Backbone.$('.property').each(function (index, el) {
-                    var $property = Backbone.$(el),
-                        $dropdownButton = $property.find('.dropdown-button');
-                    $dropdownButton.html(SearchModel.get($property.attr('data-prop-name')) || $dropdownButton.attr('data-prop-label'));
-                });
-            },
             searchPropCompiler: _.template(require('text!modules/views/html/search-prop.ejs')),
-            renderSearchChips: function () {
+            searchFieldCompiler: _.template(require('text!modules/views/html/search-field.ejs'), {
+                variable: 'data'
+            }),
+            renderSearchChips: function() {
                 var self = this;
                 this.$searchChips.html('');
-                _.forEach(SearchModel.attributes, function (propVal, propName) {
+                _.forEach(SearchModel.attributes, function(propVal, propName) {
                     if (propVal) {
                         self.$searchChips.append(self.searchPropCompiler({
-                            propName : propName,
-                            propVal : propVal
+                            propName: propName,
+                            propVal: propVal
                         }));
                     }
                 });
             },
-            searchFieldCompiler: _.template(require('text!modules/views/html/search-field.ejs'), {
-                variable: 'data'
-            }),
-            renderSearchFields: function () {
+            renderSearchFields: function() {
                 var self = this,
                     permittedSearchFields = SearchModel.visibleFields,
                     activePetType = SearchModel.get('species'),
@@ -143,7 +131,8 @@ define([
                 $searchFieldBlock.empty();
 
                 // render search fields
-                _.forEach(petProps, function(petPropData, index){_
+                _.forEach(petProps, function(petPropData, index) {
+                    _
                     var propName = petPropData.key;
                     if (_.includes(permittedSearchFields, propName)) {
                         if (petPropData.options && petPropData.options.length > 1) {
@@ -152,32 +141,23 @@ define([
                                     props: petPropData,
                                     className: propName,
                                     value: SearchModel.get(propName),
-                                    options: petPropData.options.map(function (val, index) {
+                                    options: petPropData.options.map(function(val, index) {
                                         return {
                                             value: val,
                                             label: val
                                         }
                                     })
                                 }),
-                                $searchField = Backbone.$(searchFieldHTML),
-                                $dropdown = $searchField.find('.dropdown-button');
+                                $searchField = Backbone.$(searchFieldHTML);
 
                             $searchFieldBlock.append($searchField);
                             console.log('SearchView.renderSearchFields() - rendering %s (%o) on (%o)', propName, $searchField, $searchFieldBlock);
-                            $dropdown.dropdown({});
-                            $searchField.find('.property-option__value').on('click', function () {
-                                self.onClickValue.apply(self, arguments);
-                                var $parentDropdown = Backbone.$(this).parents('.dropdown-content').siblings('.dropdown-button');
-                                console.log('closing %o', $parentDropdown);
-                                $parentDropdown.dropdown('close');
-                                return false;
-                            });
                         }
                     }
 
                 });
             },
-            render: function () {
+            render: function() {
                 var self = this;
                 petData.getModels({
                     context: self,
@@ -190,6 +170,9 @@ define([
 
     // var el = Backbone.$('#search')[0];
     var el = document.getElementById('search');
-    NameSpace.SearchView = (el) ? new SearchView({el: el, model: SearchModel}) : SearchView;
+    NameSpace.SearchView = (el) ? new SearchView({
+        el: el,
+        model: SearchModel
+    }) : SearchView;
     return NameSpace.SearchView;
 });

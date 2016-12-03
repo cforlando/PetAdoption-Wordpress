@@ -2,162 +2,159 @@
 	Search
 	==================================================  */
 $padding-input-fields-px-sans: 12;
-.search {
-  font-family: sans-serif;
-  @include inline-block();
+#search {
+  font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  height: 100%;
   width: 100%;
-  background-color: $color-dark-grey;
-  color: $color-white;
+  margin: 0;
+  padding: 0;
 
-  &,
-  * {
-    @include box-sizing(border-box);
+  *, *:before, *:after {
+    box-sizing: border-box;
+    position: relative;
   }
 
-  .search-heading {
+  .entry-title,
+  .search-cta__text {
+    @extend %serif;
+    padding: 1rem;
+    text-align: center;
+    background: $color-primary;
+    color: white;
+    margin: 0;
 
-    &__text {
-
-    }
-  }
-
-  .search-preview {
-
-    &__wrap {
-
-    }
-  }
-  .search-cta {
-    background-color: $color-grey;
-    padding: em($padding-input-fields-px-sans) (100% * 24/1280);
-
-    a,
-    &__text {
-      color: $color-white;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    a {
+    > a {
+      color: $color-primary-light;
       text-decoration: none;
-      color: $color-white;
-      box-shadow: none;
+      white-space: nowrap;
     }
   }
 
   .image,
-  .instructions,
-  .search-fields {
-    @include inline-block();
-    //padding: 1.5em (100% * 24/1280);
-    padding: 1.5em (100% * 24/1280);
-    width: (100% / 3);
+  .search-fields,
+  .instructions {
+    flex-grow: 1;
+    flex-shrink: 1;
   }
 
-  .image {
+  .search-fields {
     text-align: center;
+    flex-shrink: 0;
+    padding-left: 1em;
+    padding-right: 1em;
 
-    &__placeholder {
-      @include pet-photo();
+    .search-fields__wrap {
+      padding-bottom: 1em;
+      display: inline-block;
+    }
+  }
+  .image {
+    flex-basis: 8em;
+    height: 8rem;
+    outline: 1px solid red;
+    margin: 1em;
+
+    .image__placeholder {
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      height: 100%;
+      width: 100%;
     }
   }
 
   .instructions {
-    padding-left: 0;
-    padding-right: 0;
+    flex-basis: 15em;
+    padding-left: 1em;
+    padding-right: 1em;
 
-    &__heading {
-      margin: 0 auto .5em;
-      text-align: center;
+    .instructions__heading {
+      font-size: 1rem;
+      padding-bottom: 0.5rem;
+      margin: 0;
+      border-bottom: 1px solid $color-border;
+      font-weight: 600;
     }
   }
 
-  .search-fields {
-    $selector-block: &;
+  .search__form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 2rem 0;
+    align-items: center;
 
-    #{$selector-block}__wrap {
+    @media (max-width: 480px){
+      font-size: .75em;
+    }
 
+    > * {
+      max-width: 100%;
     }
 
   }
 
-  .advanced-options {
-    $selector-block: &;
+  .button {
+    white-space: nowrap;
+    margin-right: auto;
 
-    #{$selector-block}__wrap {
-
+    &--advanced-options{
+      max-width: 100%;
+      white-space: normal;
     }
-  }
-  .toggle {
-    $selector-block: &;
 
-    &--advanced-options {
-      padding-bottom: em($padding-input-fields-px-sans);
-      text-decoration: none;
+    &--submit {
+      flex: 1 0 100%;
 
-      .toggle__link {
-        box-shadow: none;
-        background-color: $color-grey;
-        color: $color-white;
-        display: block;
-        padding: em(12);
-        text-decoration: none;
-        text-align: center;
+      .button__input {
+        transition-duration: $duration-transition-short-ms;
+        //@extend %button;
+        max-width: 100%;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 0;
       }
     }
   }
 
-  .input {
-    padding-bottom: em($padding-input-fields-px-sans);
-    @include cut-outer-padding();
-  }
+  .field {
+    &--species {
 
-  select {
-    background-color: $color-white;
-    border: 0;
-    display: block;
-    padding: em($padding-input-fields-px-sans);
-    text-align: center;
-    width: 100%;
-  }
-
-  option {
-    text-align: center;
-  }
-
-  input[type='submit'] {
-    display: block;
-    background-color: $color-grey;
-    padding: em($padding-input-fields-px-sans);
-    text-align: center;
-    width: 100%;
-  }
-
-  .search-results {
-
-    &__wrap {
-      text-align: center;
+      .field__select {
+        margin: 0 auto;
+        max-width: 100%;
+      }
     }
   }
- 
+
   .search-chips {
-    padding: 12px;
+    padding: 0;
   }
 
-  .prop-chip, 
+  .prop-chip,
   .chip {
     cursor: pointer;
   }
 
+  .chip,
   .prop-chip {
+    transition: background-color $duration-transition-short-ms;
     display: inline-block;
-    background-color: lighten($color-grey, 25%);
+    background-color: $color-secondary;
     border-radius: 1.75em;
-    margin: .25em 1em;
+    margin-bottom: 1em;
+    margin-right: 1em;
     padding: .5em .75em;
     font-size: 1.25em;
     font-weight: 500;
-    color: rgba(0,0,0,.6);
+    line-height: 1;
+    color: $color-white;
+
+    &:hover {
+      background-color: $color-secondary-dark;
+    }
 
     i {
       font-size: 1.5em;
@@ -178,28 +175,6 @@ $padding-input-fields-px-sans: 12;
     i {
       vertical-align: middle;
       font-size: 1.5em;
-    }
-  }
-
-  @media #{$media-mobile} {
-
-    .image,
-    .instructions,
-    .search-fields {
-      display: block;
-      padding: .75em 1.5em;
-      width: 100%;
-    }
-
-    .image {
-      padding-top: 1.5em;
-    }
-
-    .search-fields {
-
-      &__wrap {
-        padding: 0;
-      }
     }
   }
 }

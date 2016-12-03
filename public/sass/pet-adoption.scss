@@ -1,12 +1,46 @@
 @import url('https://fonts.googleapis.com/css?family=Merriweather');
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600');
+@import "vendors/remodal";
+@import "vendors/remodal-default-theme";
+@import "vendors/slick";
+@import "vendors/slick-theme";
 
+#search{
+  @import "vendors/uswds/stylesheets/all";
+}
+
+.remodal{
+  &.advanced-options-view{
+    @import 'vendors/uswds/stylesheets/lib/bourbon';
+    @import 'vendors/uswds/stylesheets/lib/neat';
+    @import 'vendors/uswds/stylesheets/lib/normalize';
+
+    // Core -------------- //
+    @import 'vendors/uswds/stylesheets/core/variables';
+    @import 'vendors/uswds/stylesheets/core/fonts';
+    @import 'vendors/uswds/stylesheets/core/base';
+    @import 'vendors/uswds/stylesheets/core/grid';
+    @import 'vendors/uswds/stylesheets/core/utilities';
+
+    // Elements -------------- //
+    // Styles basic HTML elements
+    @import 'vendors/uswds/stylesheets/elements/inputs';
+    @import 'vendors/uswds/stylesheets/elements/buttons';
+  }
+}
+
+@import "helpers/-all";
+@import "views/-all";
+
+
+/*
 $color-primary: #112E51;
 $color-primary-light: #02bfe7;
 $color-secondary: #e31c3d;
 $color-secondary-dark: #cd2026;
 $color-link: #0071bc;
 $color-border: #5b616b;
+
 
 .page {
   font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
@@ -147,3 +181,4 @@ body, html {
   margin: 0;
   padding: 0;
 }
+*/

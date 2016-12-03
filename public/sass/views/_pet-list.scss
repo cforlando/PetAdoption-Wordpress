@@ -2,6 +2,16 @@
 	Pet List View
 	==================================================  */
 
-.wrap-search-results {
+.search-result {
   text-align: center;
 }
+
+.search-results__wrap {
+  text-align: center;
+
+  > .pet {
+    display: inline-block;
+    width: 15em;
+  }
+}
+

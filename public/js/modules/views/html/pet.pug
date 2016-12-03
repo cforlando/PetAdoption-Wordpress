@@ -3,8 +3,7 @@ include _auto-generated/_-all
     .pet__wrap
         .pet-name
             h2.pet-name__text!="<%= model.get('petName') %>"
-        .pet-photo
-            .pet-photo__placeholder(style!=bg("<%= (model.get('images').length > 0) ? model.get('images')[0] : 'http://placehold.it/480x480' %>"))
+        .pet-photo(style!=bg("<%= (model.get('images').length > 0) ? model.get('images')[0] : 'http://placehold.it/480x480' %>"))
         .pet-info
             .pet-info__wrap
                 .pet-info-breed
@@ -15,5 +14,4 @@ include _auto-generated/_-all
                     p.pet-info-sex__text!="<%= model.get('sex') %>"
         .pet-details
             .pet-details__wrap
-        .btn--more-info
-            a.btn__link(href!="#<%= model.get('petId') %>") More Info
+        button.button.button--more-info.usa-button-primary-alt(href!="#<%= model.get('petId') %>") More Info
