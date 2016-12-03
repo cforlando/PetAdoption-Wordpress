@@ -11,6 +11,7 @@
     + you can can read more about how it works on its [github repo](https://github.com/khalidhoffman/gulp-utils.git)
     + `gulp --tasks` shows a list of all possible tasks, but you'll probably only want to use:
        + `gulp build-webpack` - bundles and minifies javascript
+       + `gulp sass` - compiles sass to css
        + `gulp pug-php` - compiles `admin/pug/*.pug` and `public/pug/*.pug` files
        + `gulp pug-ejs` - compiles `public/javascript/modules/views/html/*.pug` files to `.ejs` files
 
