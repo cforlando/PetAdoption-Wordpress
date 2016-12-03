@@ -1,13 +1,19 @@
 {
   "name": "petadoption-wordpress",
-  "version": "1.2.5",
+  "version": "1.2.6",
   "description": "Pet Adoption Plugin for WordPress",
   "main": "gulpfile.js",
   "dependencies": {},
   "devDependencies": {
+    "async": "^2.1.4",
+    "backbone": "^1.3.3",
     "gulp-utils": "git+https://github.com/khalidhoffman/gulp-utils.git#dev",
     "json-loader": "^0.5.4",
+    "lodash": "^4.17.2",
     "raw-loader": "^0.5.1",
+    "remodal": "^1.1.0",
+    "selectize": "^0.12.4",
+    "slick-carousel": "^1.6.0",
     "uswds": "^0.13.3",
     "webpack": "^1.13.2"
   },

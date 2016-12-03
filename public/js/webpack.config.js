@@ -6,8 +6,8 @@ var path = require('path'),
     ModuleReplace = webpack.NormalModuleReplacementPlugin;
 
 module.exports = {
-    entry: "app-dev.js",
-    context: path.resolve(__dirname, 'public/js/'),
+    entry: "app.js",
+    context: path.join(process.cwd(), 'public/js/'),
     output: {
         path: './public/js/',
         filename: "cfo-pas-public.js"
@@ -26,27 +26,17 @@ module.exports = {
         ]
     },
     resolve: {
-        root: path.resolve(__dirname, 'public/js/'),
-        modulesDirectories: ['./', '../../node_modules'],
+        root: path.join(process.cwd(), 'public/js/'),
+        modulesDirectories: ['./', path.join(process.cwd(), 'node_modules')],
         extensions: ['', '.js', '.jsx'],
         alias: {
-            "production-build": "app-prod",
-            "development-build": "app-dev",
-
-            "require-lib": "vendors/requirejs/require",
-            "domReady": "vendors/domReady/domReady",
-            "text": "vendors/text/text",
+            "production-build": "app",
 
             "namespace": "modules/namespace",
 
-            "bootstrap": "vendors/bootstrap.min",
-            "async": "vendors/async/dist/async",
-            "selectize": "vendors/selectize.js/dist/js/standalone/selectize",
-            "underscore": "vendors/lodash/dist/lodash",
-            "remodal": "vendors/Remodal/dist/remodal",
-            "slick": "vendors/slick/slick/slick",
-            "backbone": "vendors/backbone/backbone",
-            "modernizr": "../vendors/modernizr-custom",
+            "underscore": "lodash",
+            "slick": "slick-carousel",
+            "modernizr": "vendors/modernizr-custom",
             "live": "vendors/live",
 
             "jquery": "vendors/jquery-custom"
