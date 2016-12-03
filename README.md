@@ -1,9 +1,9 @@
 #Code for Orlando - Pet Adoption Wordpress Plugin
 
 ###To Install
-1. Install project to WordPress plugins folder (`wp-content/plugins/`).
+1. Download zip file or clone project repo to WordPress plugins folder (`wp-content/plugins/`).
 2. Activate plugin in WP Admin Panel.
-3. Provide a domain address in WP Admin Panel Settings (`http://cfo-pet-adoption-server.eastus.cloudapp.azure.com` should work).
+3. Provide a domain address in the Pet Adoption options under the Settings menu (`http://cfo-pet-adoption-server.eastus.cloudapp.azure.com` should work).
 4. Place Shortcode `[petadoption]` on page, post, etc. to render the plugin.
 
 ###Development
