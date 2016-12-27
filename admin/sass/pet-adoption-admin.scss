@@ -1,15 +1,8 @@
+@import "compass-mixins/compass";
+@import "compass-mixins/animate";
 @import "helpers/-all";
-@import "admin/-all";
 
 #pet-adoption-settings {
 
-  label {
-    display: block;
-  }
-  
-  input[type='tel'],
-  input[type='text'],
-  textarea {
-    width: 100%;
-  }
+  @import "admin/-all";
 }

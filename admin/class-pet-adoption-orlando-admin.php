@@ -82,7 +82,6 @@ class Pet_Adoption_Orlando_Admin {
          * class.
          */
 
-        wp_enqueue_style('thickbox');
         wp_enqueue_style($this->plugin_name, plugin_dir_url(__FILE__) . 'stylesheets/pet-adoption-admin.css', array(), $this->version, 'all');
 
     }
@@ -106,10 +105,8 @@ class Pet_Adoption_Orlando_Admin {
          * class.
          */
 
-        wp_enqueue_script('media-upload');
-        wp_enqueue_script('thickbox');
-        wp_enqueue_script('jquery');
-        wp_enqueue_script($this->plugin_name, plugin_dir_url(__FILE__) . 'js/pet-adoption-orlando-admin.js', array('jquery'), $this->version, false);
+        wp_enqueue_media();
+        wp_enqueue_script($this->plugin_name, plugin_dir_url(__FILE__) . 'js/pet-adoption-orlando-admin.js', array('jquery', 'media-grid', 'media'), $this->version, true);
     }
 
     /**
@@ -119,9 +116,9 @@ class Pet_Adoption_Orlando_Admin {
      */
     public function add_options_page() {
 
-        $this->plugin_screen_hook_suffix = add_options_page(
-            __('Pet Adoption Orlando Settings', 'pet-adoption-orlando'),
-            __('Pet Adoption Orlando', 'pet-adoption-orlando'),
+        add_options_page(
+            __('Pet Adoption Settings', 'pet-adoption-orlando'),
+            __('Pet Adoption', 'pet-adoption-orlando'),
             'manage_options',
             $this->plugin_name,
             array($this, 'display_options_page')
@@ -135,8 +132,7 @@ class Pet_Adoption_Orlando_Admin {
             $this->plugin_name
         );
 
-        register_setting($this->plugin_name, $this->option_namespace . '_domain', array( $this, $this->option_namespace . '_sanitize_domain'));
-        register_setting($this->plugin_name, $this->option_namespace . '_api_key');
+        register_setting($this->plugin_name, $this->option_namespace . '_domain', array($this, $this->option_namespace . '_sanitize_domain'));
         register_setting($this->plugin_name, $this->option_namespace . '_instructions');
         register_setting($this->plugin_name, $this->option_namespace . '_tel');
         register_setting($this->plugin_name, $this->option_namespace . '_email');
@@ -154,7 +150,7 @@ class Pet_Adoption_Orlando_Admin {
         include_once 'partials/inputs.php';
     }
 
-    public function pet_adoption_sanitize_domain($value){
+    public function pet_adoption_sanitize_domain($value) {
         return preg_replace('/\/$/', "", $value);
     }
 

@@ -120,8 +120,10 @@ class Pet_Adoption_Orlando_Public {
          * class.
          */
 
-        wp_enqueue_script('live-js', plugin_dir_url(__FILE__) . 'js/vendors/live.js', array(), $this->version, true);
-        wp_enqueue_script('app', plugin_dir_url(__FILE__) . 'js/cfo-pas-public.js', array('jquery'), $this->version, true);
+//        wp_enqueue_script('live-js', plugin_dir_url(__FILE__) . 'js/vendors/live.js', array(), $this->version, true);
+        if ($this->has_shortcode('petadoption')) {
+            wp_enqueue_script('app', plugin_dir_url(__FILE__) . 'js/cfo-pas-public.js', array('jquery'), $this->version, true);
+        }
     }
 
     function petadoption_view() {
@@ -129,4 +131,26 @@ class Pet_Adoption_Orlando_Public {
         require_once plugin_dir_path(dirname(__FILE__)) . 'public/partials/search.php';
     }
 
+    function has_shortcode($shortcode = '') {
+        // taken from: https://code.tutsplus.com/articles/quick-tip-improving-shortcodes-with-the-has_shortcode-function--wp-21007
+        // check the current post for the existence of a short code
+
+        $post_to_check = get_post(get_the_ID());
+
+        // false because we have to search through the post content first
+        $found = false;
+
+        // if no short code was provided, return false
+        if (!$shortcode) {
+            return $found;
+        }
+        // check the post content for the short code
+        if (stripos($post_to_check->post_content, '[' . $shortcode) !== false) {
+            // we have found the short code
+            $found = true;
+        }
+
+        // return our final results
+        return $found;
+    }
 }

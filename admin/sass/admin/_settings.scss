@@ -1,16 +1,78 @@
 @import "../helpers/-all";
+
 /*	==================================================
 	Settings
 	==================================================  */
 
-.image-value{
-  display: inline-block;
-  vertical-align: middle;
-  white-space: nowrap;
-  margin-left: 1em;
-  max-width: 50%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  padding: .25em;
+.input-field {
+  padding-bottom: 1em;
+
+  label {
+    display: block;
+  }
+
+  input[type='tel'],
+  input[type='text'],
+  input[type='url'],
+  input[type='email'],
+  textarea {
+    width: 100%;
+  }
+}
+
+.image-preview {
+  @include inline-block();
   background-color: lighten($color-grey, 25%);
+  position: relative;
+
+  &__placeholder {
+    width: 7.5em;
+    height: 7.5em;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  &-button {
+    @include transition(background-color, 250ms, ease);
+    border-radius: 50%;
+    bottom: .75em;
+    color: inherit;
+    color: initial;
+    display: table;
+    height: 2em;
+    position: absolute;
+    text-align: center;
+    text-decoration: none;
+    width: 2em;
+
+    &:hover {
+      color: inherit;
+      color: initial;
+    }
+
+    &--clear {
+      left: .75em;
+
+      &:hover {
+        background-color: transparentize(red, .5);
+      }
+
+    }
+
+    &--upload {
+      right: .75em;
+
+      &:hover {
+        background-color: transparentize(white, .5);
+      }
+    }
+
+    &__icon {
+      border-radius: 50%;
+      display: table-cell;
+      position: relative;
+      vertical-align: middle;
+    }
+  }
 }

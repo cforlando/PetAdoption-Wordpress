@@ -3,11 +3,11 @@ include includes/_mixins
 #search.search
     script.
         window.PetAdoption = {
-            domain : "!{echo("get_option('pet_adoption_domain')")}",
-            contactInfo : {
-                tel : "!{echo("get_option('pet_adoption_tel')")}",
-                email : "!{echo("get_option('pet_adoption_email')")}",
-                web : "!{echo("get_option('pet_adoption_web')")}"
+            domain: "!{echo("get_option('pet_adoption_domain')")}",
+            contactInfo: {
+                tel: "!{echo("get_option('pet_adoption_tel')")}",
+                email: "!{echo("get_option('pet_adoption_email')")}",
+                web: "!{echo("get_option('pet_adoption_web')")}"
             }
         };
     .search-heading
@@ -19,7 +19,13 @@ include includes/_mixins
     .search__wrap
         form.search__form(action!='#!')
             .image
-                .image__placeholder(style!=bgFromURL("get_option('pet_adoption_image')"))
+                :php
+                    $image_id = get_option('pet_adoption_image');
+                    $image_url = '';
+                    if (isset($image_id)){
+                        $image_url = wp_get_attachment_url($image_id);
+                    };
+                .image__placeholder(style!=bgFromURL("$image_url"))
             .instructions
                 h5.instructions__heading!=_e('Instructions')
                 p.instructions__content!=echo("get_option('pet_adoption_instructions')")
