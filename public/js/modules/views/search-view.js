@@ -89,12 +89,12 @@ define([
                     });
                 console.log('Searching %o', query);
                 petData.findPets(query, {
-                    callback: function(err, result, service) {
+                    callback: function(err, result) {
                         if (err) {
                             throw err;
                         } else {
                             PetList.reset(result);
-                        };
+                        }
                         console.log('result: %O', err || result);
                     }
                 });
@@ -132,7 +132,6 @@ define([
 
                 // render search fields
                 _.forEach(petProps, function(petPropData, index) {
-                    _
                     var propName = petPropData.key;
                     if (_.includes(permittedSearchFields, propName)) {
                         if (petPropData.options && petPropData.options.length > 1) {

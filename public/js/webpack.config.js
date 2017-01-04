@@ -49,14 +49,14 @@ module.exports = {
         }
     },
     plugins: [
-        /*
+
         new webpack.optimize.UglifyJsPlugin({
             compress : {
                 drop_console : true,
                 drop_debugger : true
             }
         }),
-        */
+
         // Hack for requirejs's domReady plugin
         new ModuleReplace(/^(domReady\!)$/, 'modules/null-module'),
 
