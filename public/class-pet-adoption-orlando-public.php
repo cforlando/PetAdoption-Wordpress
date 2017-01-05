@@ -145,7 +145,7 @@ class Pet_Adoption_Orlando_Public {
             return $found;
         }
         // check the post content for the short code
-        if (stripos($post_to_check->post_content, '[' . $shortcode) !== false) {
+        if ($post_to_check && stripos($post_to_check->post_content, '[' . $shortcode) !== false) {
             // we have found the short code
             $found = true;
         }
