@@ -2,8 +2,13 @@ include _auto-generated/_-all
 .pet__container
     .pet__wrap
         .pet-name
-            h2.pet-name__text!="<%= model.get('petName') %>"
-        .pet-photo(style!=bg("<%= (model.get('images').length > 0) ? model.get('images')[0] : 'http://placehold.it/480x480' %>"))
+            h2.pet-name__text!="<%= model.get('petName') || 'N/A' %>"
+        -
+            var fallbackPhotoUrl = 'https://placehold.it/480x480';
+            var petPhotoUrl = "<%= (model.get('images').length > 0) ? model.get('images')[0] : '' %>";
+            var speciesPhotoUrl = "<%= apiDomain %>/images/placeholders/<%= model.get('species') %>.png";
+            var petPhotoStyleAttr = "background-image:  url('"+petPhotoUrl + "'), url('" + speciesPhotoUrl + "'), url('" + fallbackPhotoUrl + "');"
+        .pet-photo(style!=petPhotoStyleAttr)
         .pet-info
             .pet-info__wrap
                 .pet-info-breed

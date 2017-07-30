@@ -23,7 +23,7 @@ var _ = require('lodash'),
                 });
 
             Backbone.$.ajax({
-                url: self.get('domain') + '/api/v1/species',
+                url: self.get('domain') + '/api/v1/species/all/list',
                 dataType: 'json',
                 crossDomain: true,
                 success: function (data, response) {
@@ -53,7 +53,7 @@ var _ = require('lodash'),
                     async.each(self.get('types'), function each(petType, done) {
 
                         Backbone.$.ajax({
-                            url: self.get('domain') + '/api/v1/model/' + petType,
+							url: self.get('domain') + '/api/v1/species/' + petType + '/model/',
                             dataType: 'json',
                             crossDomain: true,
                             success: function (data, response) {
@@ -90,7 +90,7 @@ var _ = require('lodash'),
                 })();
             console.log('petData.findPets(%o)', formattedQuery);
             Backbone.$.ajax({
-                url: self.get('domain') + '/api/v2/query',
+                url: self.get('domain') + '/api/v2/species/all/query',
                 data: formattedQuery,
                 method: 'POST',
                 crossDomain: true,

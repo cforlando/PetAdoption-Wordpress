@@ -3,8 +3,8 @@ define([
     'namespace',
     'modules/models/search-model',
     'modules/models/pet-data',
-    'text!modules/views/html/search-field.ejs',
-    'text!modules/views/html/search-field.ejs',
+    'text!modules/views/ejs/search-field.ejs',
+    'text!modules/views/ejs/search-field.ejs',
     'domReady!',
     'selectize',
     'remodal',
@@ -27,7 +27,7 @@ define([
                 this.$searchChips = this.$('.search-chips');
                 SearchModel.set('species', this.$activeType.val());
                 this.listenTo(SearchModel, 'change', this.onSearchModelChange);
-		this.listenTo(petData, 'change:types', this.onSpeciesTypesChange);
+				this.listenTo(petData, 'change:types', this.onSpeciesTypesChange);
                 this.render();
                 return this;
             },
@@ -45,12 +45,7 @@ define([
                 this.renderSearchChips();
             },
             onSpeciesTypesChange: function() {
-                var speciesTypesOptions = petData.get('types');
-                var speciesTypeInputHTML = '';
-                speciesTypesOptions.forEach(function(speciesName){
-                    speciesTypeInputHTML += '<option value="' + speciesName + '">' + speciesName + '</option>';
-                });
-                this.$activeType.html(speciesTypeInputHTML);
+            	this.renderSpeciesTypeInput();
             },
             onToggleAdvancedOptions: function(evt) {
                 if (evt && evt.preventDefault) evt.preventDefault();
@@ -108,10 +103,18 @@ define([
                     }
                 });
             },
-            searchPropCompiler: _.template(require('text!modules/views/html/search-prop.ejs')),
-            searchFieldCompiler: _.template(require('text!modules/views/html/search-field.ejs'), {
+            searchPropCompiler: _.template(require('text!modules/views/ejs/search-prop.ejs')),
+            searchFieldCompiler: _.template(require('text!modules/views/ejs/search-field.ejs'), {
                 variable: 'data'
             }),
+            renderSpeciesTypeInput: function(){
+				var speciesTypesOptions = petData.get('types');
+				var speciesTypeInputHTML = '';
+				speciesTypesOptions.forEach(function(speciesName){
+					speciesTypeInputHTML += '<option value="' + speciesName + '">' + speciesName + '</option>';
+				});
+				this.$activeType.html(speciesTypeInputHTML);
+            },
             renderSearchChips: function() {
                 var self = this;
                 this.$searchChips.html('');
@@ -176,11 +179,11 @@ define([
             }
         });
 
-    // var el = Backbone.$('#search')[0];
-    var el = document.getElementById('search');
-    NameSpace.SearchView = (el) ? new SearchView({
-        el: el,
+    var searchViewParams = {
+        el: document.getElementById('search'),
         model: SearchModel
-    }) : SearchView;
+    };
+    // initialize if #search element was found in DOM
+    NameSpace.SearchView = searchViewParams.el ? new SearchView(searchViewParams) : SearchView;
     return NameSpace.SearchView;
 });

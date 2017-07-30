@@ -1,10 +1,10 @@
 define([
     'require',
-    'text!./html/pet.ejs',
+    'text!./ejs/pet.ejs',
     'namespace',
     'remodal',
     'slick',
-    'text!./html/pet-details.ejs',
+    'text!./ejs/pet-details.ejs',
     'backbone'
 ], function(require) {
     var Backbone = require('backbone'),
@@ -13,12 +13,13 @@ define([
             initialize: function(options) {
                 var self = this;
                 this.menu = options.menu;
-                this.compilePetView = _.template(require('text!./html/pet.ejs'), {
+                this.compilePetView = _.template(require('text!./ejs/pet.ejs'), {
                     imports: {
-                        model: self.model
+                        model: self.model,
+                        apiDomain: window.PetAdoption['domain']
                     }
                 });
-                this.compilePetDetailsView = _.template(require('text!./html/pet-details.ejs'), {
+                this.compilePetDetailsView = _.template(require('text!./ejs/pet-details.ejs'), {
                     imports: {
                         model: self.model,
                         menu: self.menu

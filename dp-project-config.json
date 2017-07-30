@@ -4,8 +4,8 @@
   "tasks" : [
     {
       "name" : "pug-ejs",
-      "input": "public/js/modules/views/html/",
-      "output": "public/js/modules/views/html/"
+      "input": "public/js/modules/views/ejs/",
+      "output": "public/js/modules/views/ejs/"
     },
     {
       "name" : "pug-php",
