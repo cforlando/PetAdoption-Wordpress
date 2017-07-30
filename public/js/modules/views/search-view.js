@@ -27,6 +27,7 @@ define([
                 this.$searchChips = this.$('.search-chips');
                 SearchModel.set('species', this.$activeType.val());
                 this.listenTo(SearchModel, 'change', this.onSearchModelChange);
+		this.listenTo(petData, 'change:types', this.onSpeciesTypesChange);
                 this.render();
                 return this;
             },
@@ -42,6 +43,14 @@ define([
             },
             onSearchModelChange: function() {
                 this.renderSearchChips();
+            },
+            onSpeciesTypesChange: function() {
+                var speciesTypesOptions = petData.get('types');
+                var speciesTypeInputHTML = '';
+                speciesTypesOptions.forEach(function(speciesName){
+                    speciesTypeInputHTML += '<option value="' + speciesName + '">' + speciesName + '</option>';
+                });
+                this.$activeType.html(speciesTypeInputHTML);
             },
             onToggleAdvancedOptions: function(evt) {
                 if (evt && evt.preventDefault) evt.preventDefault();
