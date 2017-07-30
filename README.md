@@ -1,12 +1,12 @@
-#Code for Orlando - Pet Adoption Wordpress Plugin
+# Code for Orlando - Pet Adoption Wordpress Plugin
 
-###To Install
+### To Install
 1. Download zip file or clone project repo to WordPress plugins folder (`wp-content/plugins/`).
 2. Activate plugin in WP Admin Panel.
-3. Provide a domain address in the Pet Adoption options under the Settings menu (`http://cfo-pet-adoption-server.eastus.cloudapp.azure.com` should work).
+3. Provide a domain address in the Pet Adoption options under the Settings menu (`http://pets.codefororlando.com` should work).
 4. Place Shortcode `[petadoption]` on page, post, etc. to render the plugin.
 
-###Development
+### Development
 - `gulp-utils` provides easy compilation of javascript, stylus, and pug/jade files.
     + you can can read more about how it works on its [github repo](https://github.com/khalidhoffman/gulp-utils.git)
     + `gulp --tasks` shows a list of all possible tasks, but you'll probably only want to use:
