@@ -1,17 +1,12 @@
-define([
-    'require',
-    'backbone',
-    'modules/models/pet-model',
-    'namespace'
-], function(require){
-    var Backbone = require('backbone'),
-        NameSpace = require('namespace'),
-        PetList = Backbone.Collection.extend({
-            model : require('modules/models/pet-model'),
-            initialize : function(){
-                console.log('PetList[%o].initialize(%o)', this, arguments);
-            }
-        });
-    NameSpace.PetList = new PetList();
-    return NameSpace.PetList;
+var Backbone = require('backbone');
+
+var PetModel = require('modules/models/pet-model');
+
+var PetList = Backbone.Collection.extend({
+	model: PetModel,
+	initialize: function () {
+		console.log('PetList[%o].initialize(%o)', this, arguments);
+	}
 });
+
+module.exports = new PetList();

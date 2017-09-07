@@ -10,8 +10,8 @@ Straight from the horse's mouth: [The Famous 5-Minute Install](https://codex.wor
 4. Place Shortcode `[petadoption]` on page, post, etc. to render the plugin.
 
 ### Development
-- `gulp-utils` provides easy compilation of javascript, stylus, and pug/jade files.
-    + you can can read more about how it works on its [github repo](https://github.com/khalidhoffman/gulp-utils.git)
+- `kdev-utils` provides easy compilation of javascript, stylus, and pug/jade files.
+    + you can can read more about how it works on its [github repo](https://github.com/khalidhoffman/kdev-utils.git)
     + `gulp --tasks` shows a list of all possible tasks, but you'll probably only want to use:
        + `gulp build-webpack` - bundles and minifies javascript
        + `gulp sass` - compiles sass to css

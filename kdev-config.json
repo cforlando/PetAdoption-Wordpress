@@ -18,20 +18,8 @@
       "output": "admin/partials/"
     },
     {
-      "name" : "js-bundle",
-      "input": "public/js/build.js"
-    },
-    {
-      "name" : "js-webpack",
+      "name" : "webpack",
       "input": "public/js/webpack.config.js"
-    },
-    {
-      "name" : "js-beautify",
-      "input": "public/js/modules/"
-    },
-    {
-      "name" : "jsx",
-      "input": "public/js/src/"
     },
     {
       "name": "sass",
